@@ -7,8 +7,7 @@ body {
   width: 100%;
   height: 61px;
   margin: auto;
-  border-top: 1px solid rgba(255, 175, 145, 0.22);
-  background-color: rgba(255, 175, 145, 0.22);
+  border-top: 1px solid transparent;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -77,13 +76,14 @@ body {
 }
 
 .acctb-content-left {
-  width: 63.5%;
+  width: 1200px;
   height: 100%;
-  box-shadow: 5px 0px 7px -7px #ccc;
+  box-shadow: 5px 0px 7px -7px #666;
+  overflow: hidden;
 }
 
 .acctb-content-right {
-  width: 37.5%;
+  width: calc(100% - 1200px);
   height: 100%;
   /* border-left: 1px solid #999; */
   box-sizing: border-box;
@@ -94,7 +94,7 @@ body {
   height: 62px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #eee;
+  border-top: 1px solid #ffaf91;
 }
 
 /* 메뉴 모음 */
@@ -104,6 +104,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background: #ffaf91;
 }
 
 
@@ -114,7 +115,7 @@ body {
 
 .acctb-menu-item img {
   width: 32px;
-  opacity: 0.7;
+  opacity: 0.8;
   transition: opacity 0.5s, transform 0.5s;
 }
 
@@ -122,7 +123,7 @@ body {
   width: 28px;
 }
 .acctb-menu-item:hover img{
-  transform: scale(1.1);
+  transform: scale(1.2);
   opacity: 1;
 }
 
@@ -135,54 +136,71 @@ body {
 
 .acctb-year h3 {
   font-size: 32px;
+  color: white;
   font-weight: bold;
 }
 
 /* 달력 */
+.acctb-table-overflow{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 .acctb-calender {
   width: 100%;
   height: calc(100% - 62px);
 }
 
 .acctb-calender thead th {
-  /* width: calc(100%/7); */
   height: 24px;
   line-height: 24px;
   border-bottom: 1px solid #ccc;
 }
+
+.acctb-calender tbody{
+  overflow: hidden;
+}
 .weekend{
   color: #faa07f;
 }
+
 /* 날짜 */
 .acctb-day {
+  width: calc(100%/7);
   vertical-align: top;
   box-sizing: border-box;
   position: relative;
   cursor: pointer;
   border-bottom:1px solid #eee;
+  transition: color 0.4s,background 0.4s, transform 0.4s;
 }
 .acctb-day.cellDisable{
   color:#ccc;
 }
-.acctb-day:before{
+.acctb-day.today{
+  background-color: rgb(238, 238, 238, 0.5);
+}
+
+.acctb-day:after{
   content: '';
   display: block;
   width:100%;
   height: 100%;
   position: absolute;
-  z-index: -1;
   top: 0;
   left: 0;
 }
-
-.acctb-day:hover::before{
-  opacity: 0.5;
+.acctb-day:hover::after{
+  opacity: 0.3;
   background-color: #eee;
 }
+
+
 /* 날짜 안에 */
 .acctb-day-in{
   width: 100%;
   height: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -204,29 +222,62 @@ body {
   display: flex;
   justify-content: space-between;
   color: #999;
-  overflow: hidden;
+  overflow-x: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .day-in-income i{
   font-size: 15px;
   font-style: normal;
   color: #5694f0;
+  overflow: hidden;
 }
 .day-in-expenses i{
   font-size: 15px;
   font-style: normal;
   color: #f7323f;
+  overflow: hidden;
+}
+/* 날짜 클릭 이벤트 */
+.acctb-day.clickOn{
+  transform: scale(1.05);
+  z-index: 10;
+  background: rgb(253, 231, 223);
+}
+.acctb-day.clickOn:hover::after{
+  opacity: 0.1;
+  background-color: #eee;
 }
 
 /* 컨텐츠 우측 */
+.acctb-content-right .acctb-cont-header{
+  justify-content: space-between;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.acctb-detail-date{
+  font-size: 18px;
+  font-weight: bold;
+}
 .cont-close{
   font-size: 18px;
   font-weight: bold;
   color: #707070;
   margin-left: 23px;
   padding-left: 30px;
+  padding-right: 10px;
   background: url(../images/icons/main-more_4x.png) no-repeat;
   background-position: 0 center;
   background-size: 25px;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .acctb-content-left{
+    width: 100%;
+  }
+  .acctb-content-right{
+    display: none;
+  }
 }
