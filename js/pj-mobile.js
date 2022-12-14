@@ -47,8 +47,6 @@ $(document).ready(function () {
 
 
 
-
-
   //***********  함수 모음  ***********//
   function Calender() {
     const today = new Date();
@@ -136,9 +134,18 @@ $(document).ready(function () {
       $(this).removeClass('errFocus')
     })
     if(category && type && amount && memo){
-      // 데이터 저장소로 데이터 전송...해야하는데...
+      dataInput(category,type,amount,memo)
     }else{
       $(focusing).focus().addClass("errFocus");
+    }
+  }
+
+  function dataInput(category,type,amount,memo){
+    let wirteDate = {
+      category : category,
+      type : type,
+      amount : amount,
+      memo : memo
     }
   }
   // ************ 제이쿼리 끝 ************ //
