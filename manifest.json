@@ -1,0 +1,23 @@
+{
+  "name" : "Hamker",
+  "short_name" : "Hamker",
+  "description" : "다이어리 ",
+  "score" : ".",
+  "start_url" : "./",
+  "display" : "standalone",
+  "orientation" : "portrait",
+  "theme_color" : "#ffaf91",
+  "background_color" : "#ffffff",
+  "icons" : [
+    {
+      "src" : "images/favicon/android-icon-192x192.png",
+      "sizes" : "192x192",
+      "type" : "image/png"
+    },
+    {
+      "src" : "images/favicon/icon-512x512.png",
+      "sizes" : "512x512",
+      "type" : "image/png"
+    }
+  ]
+}
