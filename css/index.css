@@ -66,10 +66,24 @@ fieldset {
 
 /* ****************** reset css end ****************** */
 
+/* pc ver */
+@media screen and (min-width: 960px) {
+.pc-splash{
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #ffaf91;
+  position: fixed;
+
+}
+}
+
 
 /* ****************** 0 ~ 549px ****************** */
 @media screen and (max-width: 959px) {
-
+  .pc-splash{
+    display: none;
+  }
   /******** header ********/
   .idx-header {
     width: 90.698vw;

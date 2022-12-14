@@ -50,7 +50,7 @@ body {
   transition: color 0.5s, font-size 0.5s;
 }
 
-.acctb-pc-nav-item:hover{
+.acctb-pc-nav-item:hover {
   font-size: 22px;
   color: #ffaf91;
 }
@@ -64,7 +64,8 @@ body {
   opacity: 0.7;
   transition: opacity 0.5s;
 }
-.acctb-nav-btn:hover{
+
+.acctb-nav-btn:hover {
   opacity: 1;
 }
 
@@ -122,7 +123,8 @@ body {
 .acctb-menu-item.alert img {
   width: 28px;
 }
-.acctb-menu-item:hover img{
+
+.acctb-menu-item:hover img {
   transform: scale(1.2);
   opacity: 1;
 }
@@ -141,11 +143,12 @@ body {
 }
 
 /* 달력 */
-.acctb-table-overflow{
+.acctb-table-overflow {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
+
 .acctb-calender {
   width: 100%;
   height: calc(100% - 62px);
@@ -157,10 +160,11 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
-.acctb-calender tbody{
+.acctb-calender tbody {
   overflow: hidden;
 }
-.weekend{
+
+.weekend {
   color: #faa07f;
 }
 
@@ -171,33 +175,36 @@ body {
   box-sizing: border-box;
   position: relative;
   cursor: pointer;
-  border-bottom:1px solid #eee;
-  transition: color 0.4s,background 0.4s, transform 0.4s;
+  border-bottom: 1px solid #eee;
+  transition: color 0.4s, background 0.4s, transform 0.4s;
 }
-.acctb-day.cellDisable{
-  color:#ccc;
+
+.acctb-day.cellDisable {
+  color: #ccc;
 }
-.acctb-day.today{
+
+.acctb-day.today {
   background-color: rgb(238, 238, 238, 0.5);
 }
 
-.acctb-day:after{
+.acctb-day:after {
   content: '';
   display: block;
-  width:100%;
+  width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
 }
-.acctb-day:hover::after{
+
+.acctb-day:hover::after {
   opacity: 0.3;
   background-color: #eee;
 }
 
 
 /* 날짜 안에 */
-.acctb-day-in{
+.acctb-day-in {
   width: 100%;
   height: 100%;
   position: relative;
@@ -205,14 +212,15 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
-.day-in-date{
+
+.day-in-date {
   padding-top: 5px;
   padding-left: 8px;
   box-sizing: border-box;
 }
 
 .day-in-income,
-.day-in-expenses{
+.day-in-expenses {
   width: 100%;
   font-size: 14px;
   line-height: 2;
@@ -227,40 +235,45 @@ body {
   text-overflow: ellipsis;
 }
 
-.day-in-income i{
+.day-in-income i {
   font-size: 15px;
   font-style: normal;
   color: #5694f0;
   overflow: hidden;
 }
-.day-in-expenses i{
+
+.day-in-expenses i {
   font-size: 15px;
   font-style: normal;
   color: #f7323f;
   overflow: hidden;
 }
+
 /* 날짜 클릭 이벤트 */
-.acctb-day.clickOn{
+.acctb-day.clickOn {
   transform: scale(1.05);
   z-index: 10;
   background: rgb(253, 231, 223);
 }
-.acctb-day.clickOn:hover::after{
+
+.acctb-day.clickOn:hover::after {
   opacity: 0.1;
   background-color: #eee;
 }
 
 /* 컨텐츠 우측 */
-.acctb-content-right .acctb-cont-header{
+.acctb-content-right .acctb-cont-header {
   justify-content: space-between;
   padding: 0 10px;
   box-sizing: border-box;
 }
-.acctb-detail-date{
+
+.acctb-detail-date {
   font-size: 18px;
   font-weight: bold;
 }
-.cont-close{
+
+.cont-close {
   font-size: 18px;
   font-weight: bold;
   color: #707070;
@@ -272,12 +285,117 @@ body {
   background-size: 25px;
 }
 
+/* 내용 요약 */
+.acctb-summary {
+  width: 100%;
+  height: 110px;
+  display: flex;
+  justify-content: space-evenly;
+}
 
+.acctb-summary-income,
+.acctb-summary-expend {
+  width: 39.86%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.income-summary-total .summary-total{
+  margin-right: 0.4em;
+  font-size: 18px;
+  font-weight: normal;
+  color: #5694f0
+}
+.expend-summary-total .summary-total{
+  margin-right: 0.4em;
+  font-size: 18px;
+  font-weight: normal;
+  color: #f7323f
+}
+.income-summary-category,
+.expend-summary-category{
+  font-size: max(14px,0.5vw);
+  color:#666;
+}
+.income-summary-total,
+.expend-summary-total,
+.income-summary-category,
+.expend-summary-category,
+.income-detail-amount,
+.income-detail-reason,
+.expend-detail-amount,
+.expend-detail-reason {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.acctb-detail {
+  width: 100%;
+  height: 690px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #eee;
+  font-size: 15px;
+}
+
+.acctb-detail-income,
+.acctb-detail-expend {
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.acctb-detail-income {
+  border-right: 1px solid #eee
+}
+
+.detail-title {
+  font-size: 18px;
+  letter-spacing: 0.4em;
+  font-weight: bold;
+}
+
+.detail-item {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-category {
+  font-size: 13px;
+  color: #666;
+  margin-left: 0.7em;
+}
+
+.income-detail,
+.expend-detail {
+  font-size: 1.1em;
+  margin-right: 4px;
+}
+
+.acctb-detail-income .detail-title,
+.income-detail {
+  color: #5694f0
+}
+
+.acctb-detail-expend .detail-title,
+.expend-detail {
+  color: #f7323f
+}
+
+/*********************************/
 @media screen and (max-width: 1200px) {
-  .acctb-content-left{
+  .acctb-content-left {
     width: 100%;
   }
-  .acctb-content-right{
+
+  .acctb-content-right {
     display: none;
   }
 }
