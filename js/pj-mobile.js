@@ -1,5 +1,7 @@
 $(document).ready(function () {
   Calender();
+  total();
+
   let targetDate = ($(".today").attr("data-date"));
   $(".acctb-calender td").on('click', function (e) {
     if (!$(this).hasClass("clickOn")) {
@@ -10,16 +12,19 @@ $(document).ready(function () {
     targetDate = target.attr("data-date");
     changeNote(targetDate)
   })
-
+// 상세보기 접기
   $(".cont-close").on('click', function () {
-    resizeWindow()
+    onOffDetail('btn')
   });
-
+// 상세보기 열기
   $(".acctb-day").on('dblclick', function () {
-    date = $(this).attr('data-date')
+    onOffDetail('dblclick')
+  })
+  $(".plus").on('click',function(){
+    date = $('.clickOn').attr('data-date')
     $(".acctb-modal-container").removeClass("modalOff");
   })
-
+// 모달 닫기
   $(".modal-close").on('click', function () {
     $(".acctb-modal-container").addClass("modalOff");
   })
@@ -31,21 +36,11 @@ $(document).ready(function () {
     }
   })
 
-  $(".modal-submit").on('click',function(){
-    modalVali()
+  $("#record").on('click',function(){
+    modalVali();
   })
 
-
-
-
-
-
-
-
-
-
-
-
+  
 
   //***********  함수 모음  ***********//
   function Calender() {
@@ -84,10 +79,7 @@ $(document).ready(function () {
             `<td data-date="${dateFormat(sFullDate)}" class="acctb-day${weekendChk}${tdClass[0]}${tdClass[1]}">
             <div class="acctb-day-in">
               <span class="day-in-date">${sFullDate.getDate()}</span>
-              <div>
-                <div class="day-in-income"><span>수입</span><i></i></div>
-                <div class="day-in-expenses"><span>지출</span><i></i></div>
-              </div>
+                <div class="day-in-total"><span>-</span></div>
             </div>          
           </td>`
           );
@@ -97,7 +89,6 @@ $(document).ready(function () {
     $(".acctb-year h3").text(`${nYear}년 ${nMonth + 1}월`);
     $(".acctb-detail-date h3").text(`${nYear}년 ${nMonth + 1}월 ${today.getDate()}일`);
   };
-
   function dateFormat(date) {
     let y = date.getFullYear();
     let m = date.getMonth() + 1;
@@ -108,45 +99,106 @@ $(document).ready(function () {
   function sameDate(date1, date2) {
     return (date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth() && date1.getDate() === date2.getDate())
   }
-  function resizeWindow() {
-    if ($(".acctb-content-right").hasClass("offContent")) {
-      $(".acctb-content-right").stop().removeClass("offContent").animate({ width: "calc(100% - 1200px)" }, 400).show()
+  function onOffDetail(e) {
+    if (e == 'dblclick') {
+      // 상세보기
+      $(".acctb-content-right").stop().show().removeClass("offContent")
       $(".acctb-content-left").stop().animate({ width: "1200px" }, 400)
     } else {
-      $(".acctb-content-right").stop().hide(400).addClass("offContent").animate({ width: 0 }, 700, 'linear')
-      $(".acctb-content-left").stop().animate({ width: "100%" }, 400)
+      // 상세보기 닫기
+      $(".acctb-content-right").stop().hide(200).addClass("offContent")
+      $(".acctb-content-left").stop().animate({ width: "100%" }, 700)
     }
   }
-
   function changeNote(date) {
     dateShow = date.split("-")
     $(".acctb-detail-date h3").text(`${dateShow[0]}년 ${dateShow[1]}월 ${dateShow[2]}일`)
   }
-
   function modalVali(){
-    let category = $('#category').attr('data-selected');
     let type = $("#type").attr('data-selected');
+    let category = $('#category').attr('data-selected');
     let amount = $('#input-amount').val();
     let memo = $('#input-memo').val();
 
-    let focusing = (!category)? '#category':(!type)? '#type':(!amount)? '#input-amount':'#input-memo';
+    let focusing = (!type)? '#type':(!category)? '#category':(!amount)? '#input-amount':'#input-memo';
     $(focusing).on('blur',function(){
       $(this).removeClass('errFocus')
     })
     if(category && type && amount && memo){
-      dataInput(category,type,amount,memo)
+      let t = (type == '수입')? 'income':'expend';
+      let c = (category == '카드')? 'card':'cash'; 
+      let inputDate = {
+        type : t,
+        category : c,
+        amount : numToMoney(amount),
+        memo : memo,
+      }
+
+      $(`.acctb-detail-${inputDate.type}`).append(
+        `<div class="detail-item" data-category="${inputDate.category}" data-type="${inputDate.type}">
+            <div class="${inputDate.type}-detail-reason">
+              <b class="detail-name">${memo}</b>
+              <p class="detail-category">${category}</p>
+            </div>
+            <div class="${inputDate.type}-detail-amount">
+              <span class="${inputDate.type}-detail detail-amount">${inputDate.amount}</span>
+              <p class="${inputDate.type}-detail-unit">원</p>
+            </div>
+          </div>`
+      )
+      total('re',inputDate.type)
+      let clickOn = $(".clickOn").find('.day-in-total');
+      clickOn = clickOn.find('span')
+      let inc = Number(moneyToNum($(".acctb-summary-income .summary-total").text()));
+      let exp = Number(moneyToNum($(".acctb-summary-expend .summary-total").text()));
+      (inc-exp == 0)? clickOn.text('-'):(inc-exp > 0)? clickOn.css({color:'#5694f0'}).text(`+ ${numToMoney(inc-exp)}`):clickOn.css({color:'#f7323f'}).text(`- ${numToMoney(exp - inc)}`)
+      $('.acctb-modal-container').addClass('modalOff');
     }else{
       $(focusing).focus().addClass("errFocus");
     }
   }
+  function total(e,type) {
+    switch (e){
+      case 're' :
+        let cardTotal = totalCalc(type,'card')
+        let cashTotal = totalCalc(type,'cash')
+        $(`.acctb-summary-${type} .summary-total`).text(numToMoney(cardTotal + cashTotal));
+        $(`.acctb-summary-${type} .card`).text(numToMoney(cardTotal));
+        $(`.acctb-summary-${type} .cash`).text(numToMoney(cashTotal));
+      break;
 
-  function dataInput(category,type,amount,memo){
-    let wirteDate = {
-      category : category,
-      type : type,
-      amount : amount,
-      memo : memo
+      default: 
+        let iCardTotal = totalCalc('income','card')
+        let iCashTotal = totalCalc('income','cash')
+    
+        $(".acctb-summary-income .summary-total").text(numToMoney(iCardTotal + iCashTotal));
+        $(".acctb-summary-income .cash").text(numToMoney(iCashTotal));
+        $(".acctb-summary-income .card").text(numToMoney(iCardTotal));
+    
+        let eCardTotal = totalCalc('expend','card')
+        let eCashTotal = totalCalc('expend','cash')
+    
+        $(".acctb-summary-expend .summary-total").text(numToMoney(eCardTotal + eCashTotal));
+        $(".acctb-summary-expend .cash").text(numToMoney(eCashTotal));
+        $(".acctb-summary-expend .card").text(numToMoney(eCardTotal));
+      break;
     }
+  }
+  function totalCalc(type, category){
+    calcTarget = $(`.detail-item[data-type='${type}'][data-category='${category}']`)
+    result = 0;
+    for(i=0;i<calcTarget.length;i++){
+      result += Number(moneyToNum(calcTarget.eq(i).find(".detail-amount").text()))
+    }
+    return result;
+  }
+  function numToMoney(input){
+    if(input >= 0){
+      return input.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+  }
+  function moneyToNum(input){
+    return input.replace(/,/g, '');
   }
   // ************ 제이쿼리 끝 ************ //
 });

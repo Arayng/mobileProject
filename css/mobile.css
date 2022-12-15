@@ -1,0 +1,514 @@
+/* ****************** 웹 폰트 ****************** */
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+
+/* ****************** reset css ****************** */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+button {
+  font-weight: normal;
+  font-size: 16px;
+  font-family: "Pretendard", "맑은 고딕", 'Open Sans', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ol,
+dl,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+address {
+  font-style: normal;
+}
+
+.hide {
+  overflow: hidden;
+  /* position: absolute; */
+  width: 0;
+  height: 0;
+  line-height: 0;
+  text-indent: -9999px
+}
+
+fieldset {
+  border: none;
+}
+
+/* ****************** reset css end ****************** */
+
+/* pc ver */
+@media screen and (min-width: 960px) {
+.pc-splash{
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #ffaf91;
+  position: fixed;
+
+}
+}
+
+
+/* ****************** 0 ~ 549px ****************** */
+@media screen and (max-width: 959px) {
+  .pc-splash{
+    display: none;
+  }
+  /******** header ********/
+  .idx-header {
+    width: 90.698vw;
+    height: 13.954vmin;
+    position: relative;
+    margin: 35px auto 0;
+  }
+
+  /* logo */
+  .idx-logo {
+    width: 40.466vw;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 13.954vmin;
+  }
+
+  .idx-logo img {
+    width: 85.633%;
+    height: 100%;
+  }
+
+  /* profile */
+  .idx-profile {
+    width: 13.954vmin;
+    height: 13.954vmin;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: #ffaf91;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .idx-profile img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+/**** nav ****/
+/* nav-btn */
+  .pub-nav-btn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: block;
+    text-indent: -9999px;
+    width: 7.442vmin;
+    height: 7.442vmin;
+    background: url(../images/icons/menu_btn_2x.png) no-repeat center / 68.75% 62.5%;
+  }
+/* nav bg */
+  .pub-nav{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.38);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .2s,visibility .2s;
+  }
+  .pub-nav-bg{
+    width: 280px;
+    height: 100%;
+    margin: 0 0 0 auto;
+    background-color: #fff;
+    position: relative;
+    z-index: 101;
+    transform: translateX(50%) scaleX(.8);
+    transform-origin: left;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .3s;
+  }
+  .pub-nav.menuOn{
+    visibility: visible;
+    opacity: 1;
+  }
+  .pub-nav.menuOn > .pub-nav-bg{
+    transform: translate(0);
+    opacity: 1;
+  }
+  .pub-nav-menu{
+    width: 100%;
+    height: 100%;
+    padding: 50px 20px;
+    box-sizing: border-box;
+  }
+  .pub-nav-item{
+    display: block;
+    color: #999;
+    font-weight: bold;
+    line-height: 1.5;
+    padding: 10px;
+    transition: border-radius 1s;
+  }
+  .pub-nav-item:focus{
+    color: #ffaf91;
+    background-color: #efefef;
+    border-radius: calc(1.5em + 20px);
+  }
+/* nav item */
+
+/******** header end ********/
+/******* contents ********/
+/* main */
+  .idx-main {
+    width: 95.35vw;
+    position: relative;
+    margin: 50px auto 0;
+  }
+
+/* contens summary(quick) */
+  .idx-cont-wrap {
+    width: 81.396vmin;
+    height: min(72.55vmin, 312px);
+    margin: auto;
+  }
+
+  .idx-cont-box {
+    width: 81.396vmin;
+    height: min(65.12vmin, 280px);
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.16);
+    box-sizing: border-box;
+  }
+
+  .idx-cont-title {
+    width: 94.29%;
+    margin: auto;
+    border-bottom: 1px solid #707070;
+    padding: 15px 5px 9px;
+    box-sizing: border-box;
+    font-size: min(4.187vw, 22px);
+    font-weight: bold;
+  }
+
+  /* cont-chklist */
+  .idx-chklist {
+    width: 94.29%;
+    margin: auto;
+    padding: 19px 5px 0;
+    box-sizing: border-box;
+  }
+
+  .idx-chklist-box {
+    height: min(5.117vw, 22px);
+    margin-bottom: min(4.652vw, 20px);
+  }
+
+  .idx-chklist-inpChk {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+
+  .idx-chklist-labelChk {
+    background-image: url(../images/icons/chkbox.png);
+    background-size: min(5.117vw, 22px) auto;
+  }
+
+  .idx-chklist-inpChk+.idx-chklist-labelChk {
+    padding: 0 0 0 min(7.21vw, 31px);
+    height: min(5.117vw, 22px);
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    font-size: min(3.256vw, 16px);
+    line-height: min(5.117vw, 22px);
+    vertical-align: text-bottom;
+    color: #000;
+    vertical-align: top;
+    cursor: pointer;
+  }
+
+  .idx-chklist-inpChk:checked+.idx-chklist-labelChk {
+    background-position: 0 max(-5.117vw, -22px);
+  }
+
+  /* more btn */
+  .idx-design-box {
+    text-align: end;
+    padding: 0 min(3.488vw, 15px);
+    box-sizing: border-box;
+  }
+
+  .idx-chklist-more {
+    font-size: min(3.256vw, 16px);
+    color: #707070;
+    padding-right: min(5.117vw, 22px);
+    background-image: url(../images/icons/main-more_4x.png);
+    background-repeat: no-repeat;
+    background-size: min(5.117vw, 14px) auto;
+    background-position: right center;
+  }
+
+  /* slide2 */
+  /* slide3 */
+  /* pager */
+  .idx-cont-pager-wrap {
+    width: 100%;
+    margin-top: min(2.326vw, 10px);
+  }
+
+  .idx-cont-pager {
+    height: min(5.117vw, 22px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .idx-cont-pager li {
+    width: min(1.395vw, 10px);
+    height: min(1.395vw, 10px);
+    border-radius: min(1.395vw, 10px);
+    background-color: #bbb;
+    margin: 0 4px;
+    transition: width 0.4s, background 0.4s;
+  }
+
+  .idx-cont-pager li.contOn {
+    width: min(3.721vw, 24px);
+    border-radius: min(1.395vw, 10px);
+    background-color: #ffaf91;
+  }
+
+  /******* banner *******/
+  .idx-banner-wrap {
+    width: 95.35vmin;
+    height: 32.559vmin;
+    margin: min(11.627vw, 50px) auto 0;
+    border-radius: 10px;
+    background-image: url(../images/banner_2x.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .idx-banner {
+    display: block;
+    width: 33.954vmin;
+    height: 6.977vmin;
+    margin: 24.390% 3.659% 2.44% 60.732%;
+    text-indent: -9999px;
+    overflow: hidden;
+    background: url(../images/banner-link_2x.png) no-repeat;
+    background-size: contain;
+  }
+
+  /******* quick menu *******/
+  .idx-quick-wrap {
+    width: 95.35vmin;
+    margin: min(11.627vw, 50px) auto 0;
+  }
+
+  .idx-quick {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .idx-quick li {
+    text-align: center;
+  }
+
+  .idx-quick li a {
+    display: block;
+    width: 16.28vmin;
+    font-size: min(3.721vw, 16px);
+    line-height: 1.5;
+    padding-top: 92.858%;
+  }
+
+  /* 임시 */
+  .idx-quick li a {
+    background-image: url(../images/temp-bg_2x.png);
+    background-repeat: no-repeat;
+    background-size: 13.9534vw auto;
+    background-position: center 0;
+  }
+
+  /******* notice *******/
+  .idx-notice-wrap {
+    width: 95.35vmin;
+    margin: min(11.627vw, 50px) auto 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #999;
+  }
+
+  /* title */
+  .idx-notice-title {
+    font-size: min(4.187vw, 22px);
+    line-height: 1.5;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #999;
+  }
+
+  .idx-notice-title a {
+    color: #FFAF91;
+  }
+
+  /* content */
+  .idx-notice-cont li {
+    line-height: 1.3;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .idx-notice-cont li:last-child {
+    border-bottom: none;
+  }
+
+  .idx-notice-cont-header {
+    font-size: min(3.256vw, 16px);
+  }
+
+  .idx-notice-cont-meta {
+    font-size: min(2.326vw, 12px);
+    color: #999;
+  }
+
+  .idx-notice-cont-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+/******** footer ********/
+  .idx-footer {
+    position: relative;
+    width: 100%;
+    margin: 50px auto 0;
+    background-color: #eee;
+    padding: 30px 20px 20px;
+    box-sizing: border-box;
+  }
+/* footer menu */
+  .idx-footer-menu li{
+    margin-right: min(4.652vw, 20px)
+  }
+  .idx-footer-menu li:last-child{
+    margin-right: 0
+  }
+  .idx-footer-menu li a{
+    font-size: min(3.256vw, 16px);
+    line-height: 1.7;
+    color: #999;
+  }
+  .idx-footer-menu-cont {
+    display: flex;
+  }
+
+  .idx-footer-terms{
+    margin-top: 15px;
+    display: flex;
+  }
+/* footer copyright */
+  .idx-footer-copyright{
+    margin-top: 60px;
+    font-size: min(3.256vw, 16px);
+    line-height: 1.7;
+    color: #999;
+  }
+/* footer color reverse btn */
+  .idx-footer-dark{
+    width: 118px;
+    height: 28px;
+    background-color: #000;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+  }
+  .idx-footer-dark p{
+    font-size: 14px;
+    color:#fff;
+  }
+  .idx-footer-darkBtn{
+    width: 28px;
+    height: 14px;
+    border-radius: 14px;
+    background: #fff;
+    position: relative;
+  }
+  .idx-darkBtn{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #707070;
+    position: absolute;
+    transition: transform 0.4s;
+  }
+  .idx-footer-darkBtn.darkOn{
+    transform: translate(100%);
+  }
+}
+@media screen and (max-width: 419px){
+  .idx-footer-dark{
+    position: static;
+    margin-top: 20px;
+  }
+}

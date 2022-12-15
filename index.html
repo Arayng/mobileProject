@@ -11,7 +11,6 @@
   <link rel="icon" href="images/favicon/favicon-32x32.png" type="image/png" sizes="32x32">
 
   <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/acctb.css">
   <link rel="stylesheet" href="css/acctbModal.css">
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <script src="js/pj-mobile.js"></script>
@@ -24,24 +23,11 @@
       <h2 class="hide">주요 메뉴 PC</h2>
       <nav class="acctb-pc-nav">
         <ul class="acctb-pc-nav-menu">
-          <li><a href="#" class="acctb-pc-nav-item">내 정보</a></li>
-          <li><a href="#" class="acctb-pc-nav-item">고객센터</a></li>
+          <li><a href="#" class="acctb-pc-nav-item">가이드</a></li>
+          <li><a href="#" class="acctb-pc-nav-item">문의하기</a></li>
         </ul>
       </nav>
     </div>
-    <!-- <a href="#" class="pub-nav-btn acctb-nav-btn">메뉴 열기</a>
-    <nav class="pub-nav hide">
-      <h2 class="hide">주요 메뉴</h2>
-      <div class="pub-nav-bg">
-        <ul class="pub-nav-menu">
-          <li><a href="#" class="pub-nav-item">내 정보</a></li>
-          <li><a href="#" class="pub-nav-item">달력</a></li>
-          <li><a href="#" class="pub-nav-item">가계부</a></li>
-          <li><a href="#" class="pub-nav-item">스토어</a></li>
-          <li><a href="#" class="pub-nav-item">설정</a></li>
-        </ul>
-      </div>
-    </nav> -->
   </header>
   <section class="acctb-content">
     <div class="acctb-content-left">
@@ -50,7 +36,10 @@
         <div class="acctb-menu">
           <sapn><a href="#" class="acctb-menu-item"><img src="images/icons/menu_stat-white.png" alt="통계"></a></sapn>
           <span class="acctb-year"><h3></h3></span>
-          <span><a href="#" class="acctb-menu-item alert"><img src="images/icons/alert-white.png" alt="알람"></a></span>
+          <span>
+            <a href="#" class="acctb-menu-item plus"><img src="images/icons/plus-white_2x.png" alt="추가하기"></a>
+            <a href="#" class="acctb-menu-item alert"><img src="images/icons/alert-white.png" alt="알람"></a>
+          </span>
         </div>
       </div>
       <table class="acctb-calender">
@@ -78,60 +67,38 @@
         <div class="acctb-summary-income">
           <div class="income-summary-total">
             <b>총 수입</b>
-            <b><span class="summary-total">27,000</span>원</b>
+            <b><span class="summary-total"></span>원</b>
           </div>
           <div class="income-summary-category">
             <p class="summary-category-cash">└ 현금</p>
-            <span class="summary-category">0</span>
+            <span class="summary-category cash"></span>
           </div>
           <div class="income-summary-category">
             <p class="summary-category-card">└ 카드</p>
-            <span class="summary-category">27,000</span>
+            <span class="summary-category card"></span>
           </div>
         </div>
         <div class="acctb-summary-expend">
           <div class="expend-summary-total">
             <b>총 지출</b>
-            <b><span class="summary-total">27,000</span>원</b>
+            <b><span class="summary-total"></span>원</b>
           </div>
           <div class="expend-summary-category">
             <p class="summary-category-cash">└ 현금</p>
-            <span class="summary-category">0</span>
+            <span class="summary-category cash"></span>
           </div>
           <div class="expend-summary-category">
             <p class="summary-category-card">└ 카드</p>
-            <span class="summary-category">27,000</span>
+            <span class="summary-category card"></span>
           </div>
         </div>
       </div>
       <div class="acctb-detail">
         <div class="acctb-detail-income">
           <h3 class="detail-title">수입</h3>
-          <!-- example -->
-          <div class="detail-item">
-            <div class="income-detail-reason">
-              <b class="detail-name">알바</b>
-              <p class="detail-category">카드</p>
-            </div>
-            <div class="income-detail-amount">
-              <span class="income-detail">27, 000</span>
-              <p class="income-detail-unit">원</p>
-            </div>
-          </div>
         </div>
         <div class="acctb-detail-expend">
           <h3 class="detail-title">지출</h3>
-          <!-- example -->
-          <div class="detail-item">
-            <div class="expend-detail-reason">
-              <b class="detail-name">카드 값</b>
-              <p class="detail-category">카드</p>
-            </div>
-            <div class="expend-detail-amount">
-              <span class="expend-detail">27, 000</span>
-              <p class="expend-detail-unit">원</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -142,7 +109,7 @@
       <h2 class="modal-popup-title">가계부 작성</h2>
       <p class="modal-select-name">수입 / 지출 선택</p>
       <div class="modal-select">
-        <button class="modal-select-btn" data-selected="" id="category">수입 / 지출</button>
+        <button class="modal-select-btn" data-selected="" id="type">수입 / 지출</button>
         <ul class="modal-option-list">
           <li class="modal-option">수입</li>
           <li class="modal-option">지출</li>
@@ -150,7 +117,7 @@
       </div>
       <p class="modal-select-name">유형 선택</p>
       <div class="modal-select">
-        <button class="modal-select-btn" data-selected="" id="type">유형 선택</button>
+        <button class="modal-select-btn" data-selected="" id="category">유형 선택</button>
         <ul class="modal-option-list">
           <li class="modal-option">카드</li>
           <li class="modal-option">현금</li>
@@ -162,11 +129,11 @@
       <input type="text" id="input-memo" name="input-memo" class="modal-input">
       <a href="#" class="modal-close"><img src="images/icons/close_2x.png" alt="닫기"></a>
       <div class="modal-btn-group">
-        <button class="modal-submit">완 료</button>
+        <button class="modal-submit" id="record">완 료</button>
       </div>
     </div>
   </div>
-
+<!-- 서비스 워커 -->
   <script>
     if('serviceWorker' in navigator){
       navigator.serviceWorker
