@@ -5,72 +5,68 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hamker</title>
-  <link rel="shotrcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" href="images/favicon/favicon-16x16.png" type="image/png" sizes="16x16">
-  <link rel="icon" href="images/favicon/favicon-32x32.png" type="image/png" sizes="32x32">
-  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
-
-
-  <script src="js/prefixfree.min.js"></script>
-  <link rel="stylesheet" href="css/mobile.css">
-  <script src="js/mobile.js"></script>
-  <!-- modal -->
-  <link rel="stylesheet" href="css/acctbModal.css">
-  <script src="js/acctbModal.js"></script>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/pj-mobile.js"></script>
 </head>
 <body>
   <div class="pc-splash"></div>
   <header class="idx-header">
-    <h1 class="idx-logo"><a href="moblieIndex.html"><img src="images/logo-full.svg" alt="Hamker"></a></h1>
+    <h1 class="idx-logo"><a href="index.html"><img src="images/logo-full.svg" alt="Hamker"></a></h1>
+    <div class="idx-profile" title="사용자 프로필">
+      <!-- <img src="images/profile/프로필.jpg" alt=""> -->
     </div>
-    <a href="#" class="nav-btn">메뉴 열기</a>
-    <nav class="nav">
+    <a href="#" class="pub-nav-btn">메뉴 열기</a>
+    <nav class="pub-nav">
       <h2 class="hide">주요 메뉴</h2>
-      <div class="nav-bg">
-        <ul class="nav-menu">
-          <li><a href="mobileChecklist.html" class="nav-item">체크리스트</a></li>
-          <li><a href="#" class="nav-item">달력</a></li>
-          <li><a href="#" class="nav-item">가계부</a></li>
-          <li><a href="#" class="nav-item">스토어</a></li>
-          <li><a href="#" class="nav-item">설정</a></li>
+      <div class="pub-nav-bg">
+        <ul class="pub-nav-menu">
+          <li><a href="#" class="pub-nav-item">내 정보</a></li>
+          <li><a href="#" class="pub-nav-item">달력</a></li>
+          <li><a href="#" class="pub-nav-item">가계부</a></li>
+          <li><a href="#" class="pub-nav-item">스토어</a></li>
+          <li><a href="#" class="pub-nav-item">설정</a></li>
         </ul>
-        <a href="#" class="nav-btn nav-close">메뉴 닫기</a>
       </div>
     </nav>
   </header>
   <main class="idx-main">
     <h2 class="hide">메인 컨텐츠</h2>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <section class="idx-cont-wrap">
-            <div class="idx-cont-box">
-              <h3 class="idx-cont-title">오늘의 할 일</h3>
-                <div class="idx-chklist" id="content-container">
-                </div>
-              <div class="idx-footer-box">
-                <a href="./mobileChecklist.html" class="idx-chklist-more">더보기</a>
-              </div>
+    <section class="idx-cont-wrap">
+      <div class="idx-cont-box">
+        <h3 class="idx-cont-title">오늘의 할 일</h3>
+        <form action="" method="post" name="chklist_form">
+          <fieldset class="idx-chklist">
+            <legend class="hide">체크 리스트</legend>
+            <div class="idx-chklist-box">
+              <input type="checkbox" name="chklist_1" id="chklist_1" class="idx-chklist-inpChk">
+              <label for="chklist_1" class="idx-chklist-labelChk">오늘 해야 할 일 1</label>
             </div>
-          </section>
-        </div>
-        <div class="swiper-slide">
-          <section class="idx-cont-wrap">
-            <div class="idx-cont-box">
-              <h3 class="idx-cont-title">가계부</h3>
-    
-              <div class="idx-footer-box">
-                <a href="#" class="idx-chklist-more">더보기</a>
-              </div>
+            <div class="idx-chklist-box">
+              <input type="checkbox" name="chklist_2" id="chklist_2" class="idx-chklist-inpChk">
+              <label for="chklist_2" class="idx-chklist-labelChk">오늘 해야 할 일 2</label>
             </div>
-          </section>
+            <div class="idx-chklist-box">
+              <input type="checkbox" name="chklist_3" id="chklist_3" class="idx-chklist-inpChk">
+              <label for="chklist_3" class="idx-chklist-labelChk">오늘 해야 할 일 3</label>
+            </div>
+            <div class="idx-chklist-box">
+              <input type="checkbox" name="chklist_4" id="chklist_4" class="idx-chklist-inpChk">
+              <label for="chklist_4" class="idx-chklist-labelChk">오늘 해야 할 일 4</label>
+            </div>
+          </fieldset>
+        </form>
+        <div class="idx-design-box">
+          <a href="#" class="idx-chklist-more">더보기</a>
         </div>
       </div>
-    </div>
-    <div class="idx-cont-pager">
-    </div>
+      <div class="idx-cont-pager-wrap">
+        <ul class="idx-cont-pager">
+          <li class="hide contOn">1</li>
+          <li class="hide">2</li>
+          <li class="hide">3</li>
+        </ul>
+      </div>
+    </section>
     <section class="idx-banner-wrap">
       <h3 class="hide">이벤트</h3>
       <a href="#" class="idx-banner">
@@ -163,7 +159,5 @@
       <p class="idx-footer-contact">Contact Us, arayng@gmail.com</p>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <script src="js/swiperSetting.js"></script>
 </body>
 </html>

@@ -12,27 +12,18 @@ $(document).ready(function () {
     targetDate = target.attr("data-date");
     changeNote(targetDate)
   })
-// 윈도우 리사이징
-  $(window).resize(function(){
-    var nowDisplayWidth = window.innerWidth;
-    resizingWindow(nowDisplayWidth);
-  })
 // 상세보기 접기
   $(".cont-close").on('click', function () {
     onOffDetail('btn')
   });
-
 // 상세보기 열기
   $(".acctb-day").on('dblclick', function () {
     onOffDetail('dblclick')
   })
-
-// 모달 열기
-  $(".plus").on('click', function () {
+  $(".plus").on('click',function(){
     date = $('.clickOn').attr('data-date')
     $(".acctb-modal-container").removeClass("modalOff");
   })
-
 // 모달 닫기
   $(".modal-close").on('click', function () {
     $(".acctb-modal-container").addClass("modalOff");
@@ -45,11 +36,11 @@ $(document).ready(function () {
     }
   })
 
-  $("#record").on('click', function () {
+  $("#record").on('click',function(){
     modalVali();
   })
 
-
+  
 
   //***********  함수 모음  ***********//
   function Calender() {
@@ -105,59 +96,42 @@ $(document).ready(function () {
 
     return `${y}-${m}-${d}`;
   }
-
   function sameDate(date1, date2) {
     return (date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth() && date1.getDate() === date2.getDate())
   }
-
   function onOffDetail(e) {
-    var nowDisplayWidth = window.innerWidth;
-    if (nowDisplayWidth > 790) {
-      if (e == 'dblclick') {
-        // 상세보기
-        $(".acctb-content-right").stop().show()
-      } else if (e == 'btn') {
-        // 상세보기 닫기
-        $(".acctb-content-right").stop().hide()
-        $(".acctb-content-left").stop().css({ width: "100%" })
-      }
+    if (e == 'dblclick') {
+      // 상세보기
+      $(".acctb-content-right").stop().show().removeClass("offContent")
+      $(".acctb-content-left").stop().animate({ width: "1200px" }, 400)
+    } else {
+      // 상세보기 닫기
+      $(".acctb-content-right").stop().hide(200).addClass("offContent")
+      $(".acctb-content-left").stop().animate({ width: "100%" }, 700)
     }
   }
-
-  function resizingWindow(nowDisplayWidth) {
-    if (nowDisplayWidth <= 790) {
-      $(".acctb-content-left").stop().css({ width: "100%" })
-      $(".acctb-content-right").stop().show()
-    } else if (nowDisplayWidth > 1920) {
-      let bigWidth = nowDisplayWidth - 720
-      $(".acctb-content-left").stop().css({ width: bigWidth })
-      $(".acctb-content-right").stop().show()
-    }
-  }
-
   function changeNote(date) {
     dateShow = date.split("-")
     $(".acctb-detail-date h3").text(`${dateShow[0]}년 ${dateShow[1]}월 ${dateShow[2]}일`)
   }
-
-  function modalVali() {
+  function modalVali(){
     let type = $("#type").attr('data-selected');
     let category = $('#category').attr('data-selected');
     let amount = $('#input-amount').val();
     let memo = $('#input-memo').val();
 
-    let focusing = (!type) ? '#type' : (!category) ? '#category' : (!amount) ? '#input-amount' : '#input-memo';
-    $(focusing).on('blur', function () {
+    let focusing = (!type)? '#type':(!category)? '#category':(!amount)? '#input-amount':'#input-memo';
+    $(focusing).on('blur',function(){
       $(this).removeClass('errFocus')
     })
-    if (category && type && amount && memo) {
-      let t = (type == '수입') ? 'income' : 'expend';
-      let c = (category == '카드') ? 'card' : 'cash';
+    if(category && type && amount && memo){
+      let t = (type == '수입')? 'income':'expend';
+      let c = (category == '카드')? 'card':'cash'; 
       let inputDate = {
-        type: t,
-        category: c,
-        amount: numToMoney(amount),
-        memo: memo,
+        type : t,
+        category : c,
+        amount : numToMoney(amount),
+        memo : memo,
       }
 
       $(`.acctb-detail-${inputDate.type}`).append(
@@ -172,62 +146,58 @@ $(document).ready(function () {
             </div>
           </div>`
       )
-      total('re', inputDate.type)
+      total('re',inputDate.type)
       let clickOn = $(".clickOn").find('.day-in-total');
       clickOn = clickOn.find('span')
       let inc = Number(moneyToNum($(".acctb-summary-income .summary-total").text()));
       let exp = Number(moneyToNum($(".acctb-summary-expend .summary-total").text()));
-      (inc - exp == 0) ? clickOn.text('-') : (inc - exp > 0) ? clickOn.css({ color: '#5694f0' }).text(`+ ${numToMoney(inc - exp)}`) : clickOn.css({ color: '#f7323f' }).text(`- ${numToMoney(exp - inc)}`)
+      (inc-exp == 0)? clickOn.text('-'):(inc-exp > 0)? clickOn.css({color:'#5694f0'}).text(`+ ${numToMoney(inc-exp)}`):clickOn.css({color:'#f7323f'}).text(`- ${numToMoney(exp - inc)}`)
       $('.acctb-modal-container').addClass('modalOff');
-    } else {
+    }else{
       $(focusing).focus().addClass("errFocus");
     }
   }
-
-  function total(e, type) {
-    switch (e) {
-      case 're':
-        let cardTotal = totalCalc(type, 'card')
-        let cashTotal = totalCalc(type, 'cash')
+  function total(e,type) {
+    switch (e){
+      case 're' :
+        let cardTotal = totalCalc(type,'card')
+        let cashTotal = totalCalc(type,'cash')
         $(`.acctb-summary-${type} .summary-total`).text(numToMoney(cardTotal + cashTotal));
         $(`.acctb-summary-${type} .card`).text(numToMoney(cardTotal));
         $(`.acctb-summary-${type} .cash`).text(numToMoney(cashTotal));
-        break;
+      break;
 
-      default:
-        let iCardTotal = totalCalc('income', 'card')
-        let iCashTotal = totalCalc('income', 'cash')
-
+      default: 
+        let iCardTotal = totalCalc('income','card')
+        let iCashTotal = totalCalc('income','cash')
+    
         $(".acctb-summary-income .summary-total").text(numToMoney(iCardTotal + iCashTotal));
         $(".acctb-summary-income .cash").text(numToMoney(iCashTotal));
         $(".acctb-summary-income .card").text(numToMoney(iCardTotal));
-
-        let eCardTotal = totalCalc('expend', 'card')
-        let eCashTotal = totalCalc('expend', 'cash')
-
+    
+        let eCardTotal = totalCalc('expend','card')
+        let eCashTotal = totalCalc('expend','cash')
+    
         $(".acctb-summary-expend .summary-total").text(numToMoney(eCardTotal + eCashTotal));
         $(".acctb-summary-expend .cash").text(numToMoney(eCashTotal));
         $(".acctb-summary-expend .card").text(numToMoney(eCardTotal));
-        break;
+      break;
     }
   }
-
-  function totalCalc(type, category) {
+  function totalCalc(type, category){
     calcTarget = $(`.detail-item[data-type='${type}'][data-category='${category}']`)
     result = 0;
-    for (i = 0; i < calcTarget.length; i++) {
+    for(i=0;i<calcTarget.length;i++){
       result += Number(moneyToNum(calcTarget.eq(i).find(".detail-amount").text()))
     }
     return result;
   }
-
-  function numToMoney(input) {
-    if (input >= 0) {
+  function numToMoney(input){
+    if(input >= 0){
       return input.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
   }
-
-  function moneyToNum(input) {
+  function moneyToNum(input){
     return input.replace(/,/g, '');
   }
   // ************ 제이쿼리 끝 ************ //

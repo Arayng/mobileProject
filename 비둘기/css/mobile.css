@@ -20,10 +20,7 @@ button {
   font-size: 16px;
   font-family: "Pretendard", "맑은 고딕", 'Open Sans', sans-serif;
 }
-body{
-  min-width: 320px;
-  min-height: 320px;
-}
+
 button {
   cursor: pointer;
 }
@@ -77,7 +74,7 @@ fieldset {
   height: 100%;
   background-color: #ffaf91;
   position: fixed;
-  z-index: 9999
+
 }
 }
 
@@ -89,8 +86,7 @@ fieldset {
   }
   /******** header ********/
   .idx-header {
-    width: 95%;
-    min-width: 320px;
+    width: 90.698vw;
     height: 13.954vmin;
     position: relative;
     margin: 35px auto 0;
@@ -102,7 +98,7 @@ fieldset {
     height: auto;
     position: absolute;
     bottom: 0;
-    left: 0
+    left: 13.954vmin;
   }
 
   .idx-logo img {
@@ -130,40 +126,19 @@ fieldset {
 
 /**** nav ****/
 /* nav-btn */
-  .nav-btn {
+  .pub-nav-btn {
     position: absolute;
-    top: 40%;
+    top: 50%;
     right: 0;
-    /* transform: translateY(-50%); */
+    transform: translateY(-50%);
     display: block;
     text-indent: -9999px;
     width: 7.442vmin;
     height: 7.442vmin;
     background: url(../images/icons/menu_btn_2x.png) no-repeat center / 68.75% 62.5%;
-    opacity: 0.7;
-    transition: transform 0.4s, opacity 0.4s;
   }
-  .nav-btn:hover{
-    opacity: 1;
-    transform: scale(1.2);
-  }
-/* nav-close */
-.nav-btn.nav-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: block;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-  background: url(../images/icons/close_2x.png) no-repeat center / 100%;
-  transition: transform 0.4s;
-}
-.nav-close:hover{
-  transform: scale(1.5)
-}
 /* nav bg */
-  .nav{
+  .pub-nav{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.38);
@@ -175,7 +150,7 @@ fieldset {
     opacity: 0;
     transition: opacity .2s,visibility .2s;
   }
-  .nav-bg{
+  .pub-nav-bg{
     width: 280px;
     height: 100%;
     margin: 0 0 0 auto;
@@ -187,30 +162,29 @@ fieldset {
     transition-timing-function: cubic-bezier(.4,0,.2,1);
     transition-duration: .3s;
   }
-  .nav.menuOn{
+  .pub-nav.menuOn{
     visibility: visible;
     opacity: 1;
   }
-  .nav.menuOn > .nav-bg{
+  .pub-nav.menuOn > .pub-nav-bg{
     transform: translate(0);
     opacity: 1;
   }
-  .nav-menu{
+  .pub-nav-menu{
     width: 100%;
     height: 100%;
     padding: 50px 20px;
     box-sizing: border-box;
   }
-  .nav-item{
+  .pub-nav-item{
     display: block;
     color: #999;
     font-weight: bold;
     line-height: 1.5;
     padding: 10px;
-    transition: border-radius 0.4s;
+    transition: border-radius 1s;
   }
-  .nav-item:focus,
-  .nav-item:hover{
+  .pub-nav-item:focus{
     color: #ffaf91;
     background-color: #efefef;
     border-radius: calc(1.5em + 20px);
@@ -222,40 +196,23 @@ fieldset {
 /* main */
   .idx-main {
     width: 95.35vw;
-    min-width: 320px;
     position: relative;
     margin: 50px auto 0;
   }
 
 /* contens summary(quick) */
-
-  .idx-slide-container{
-    width: 100%;
-    height: min(72.55vmin, 312px);
-    margin: auto;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .idx-slide-wrap{
-    display: flex;
-    position: absolute;
-    top:0;
-    left:0;
-  }
   .idx-cont-wrap {
     width: 81.396vmin;
-    margin: 0 auto 10px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.16);
-
-    overflow: hidden;
+    height: min(72.55vmin, 312px);
+    margin: auto;
   }
 
   .idx-cont-box {
     width: 81.396vmin;
     height: min(65.12vmin, 280px);
     margin: auto;
+    border-radius: 10px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.16);
     box-sizing: border-box;
   }
 
@@ -280,9 +237,6 @@ fieldset {
   .idx-chklist-box {
     height: min(5.117vw, 22px);
     margin-bottom: min(4.652vw, 20px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 
   .idx-chklist-inpChk {
@@ -305,48 +259,26 @@ fieldset {
 
   .idx-chklist-inpChk+.idx-chklist-labelChk {
     padding: 0 0 0 min(7.21vw, 31px);
-    max-width: 120px;
     height: min(5.117vw, 22px);
     display: inline-block;
     background-repeat: no-repeat;
     background-position: 0 0;
-    font-size: 16px;
+    font-size: min(3.256vw, 16px);
     line-height: min(5.117vw, 22px);
     vertical-align: text-bottom;
-    vertical-align: top;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     color: #000;
+    vertical-align: top;
     cursor: pointer;
   }
 
   .idx-chklist-inpChk:checked+.idx-chklist-labelChk {
     background-position: 0 max(-5.117vw, -22px);
   }
-  .idx-chklist-info {
-    display: flex;
-    align-items: center
-  }
-  .idx-chklist-goal {
-    font-size: 12px;
-    white-space: nowrap;
-    margin-right: 2px;
-    color: #707070;
-  }
 
-  .idx-chklist-delete {
-    display: inline-block;
-    width: 7vw;
-    height: min(5.117vw, 22px);
-    max-width: 32px;
-    max-height: 32px;
-  }
   /* more btn */
-  .idx-footer-box {
+  .idx-design-box {
     text-align: end;
     padding: 0 min(3.488vw, 15px);
-    margin-bottom: 10px;
     box-sizing: border-box;
   }
 
@@ -360,20 +292,34 @@ fieldset {
     background-position: right center;
   }
 
+  /* slide2 */
+  /* slide3 */
+  /* pager */
+  .idx-cont-pager-wrap {
+    width: 100%;
+    margin-top: min(2.326vw, 10px);
+  }
+
   .idx-cont-pager {
+    height: min(5.117vw, 22px);
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .swiper-pagination-bullet{
-    background: #707070;
-    transition: background 0.2s;
+
+  .idx-cont-pager li {
+    width: min(1.395vw, 10px);
+    height: min(1.395vw, 10px);
+    border-radius: min(1.395vw, 10px);
+    background-color: #bbb;
+    margin: 0 4px;
+    transition: width 0.4s, background 0.4s;
   }
-  .swiper-pagination-bullet-active{
-    width: 24px;
-    border-radius: 8px;
-    background:#ffaf91;
-    transition: width 0.2s;
+
+  .idx-cont-pager li.contOn {
+    width: min(3.721vw, 24px);
+    border-radius: min(1.395vw, 10px);
+    background-color: #ffaf91;
   }
 
   /******* banner *******/
@@ -546,7 +492,6 @@ fieldset {
     border-radius: 14px;
     background: #fff;
     position: relative;
-    transition: background 0.4s;
   }
   .idx-darkBtn{
     width: 12px;
@@ -558,9 +503,6 @@ fieldset {
     transition: transform 0.4s;
   }
   .idx-footer-darkBtn.darkOn{
-    background: #999;
-  }
-  .idx-footer-darkBtn.darkOn .idx-darkBtn{ 
     transform: translate(100%);
   }
 }
@@ -569,58 +511,4 @@ fieldset {
     position: static;
     margin-top: 20px;
   }
-}
-
-
-
-
-/* ****************** 아이콘 ****************** */
-
-.ham-icons{
-  overflow: hidden;
-  text-indent: -9999px;
-  opacity: 0.7;
-  transition: transform 0.4s, opacity 0.4s;
-}
-.ham-icons:hover{
-  opacity: 1;
-  transform: scale(1.2);
-}
-.i-back{
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: url(../images/icons/menu_back.png) no-repeat center;
-  background-size: 150%;
-}
-
-.i-add{
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: url(../images/icons/plus_2x.png) no-repeat center;
-  background-size: 100%;
-}
-
-.i-del{
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: url(../images/icons/close_2x.png) no-repeat center;
-    background-size: 120%;
-}
-
-.i-calendar{
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: url(../images/icons/calendar.png) no-repeat center;
-  background-size: 100%;
-}
-.i-static{
-  transition: none;
-  opacity: 1;
-}
-.i-static:hover{
-  transform: scale(1);
 }
