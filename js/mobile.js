@@ -1,13 +1,4 @@
 $(function(){
-  console.log("제이쿼리 준비 완료")
-
-  $('.nav-btn').on('click',function(){
-    $('.nav').toggleClass('menuOn')
-  })
- 
-  $('.idx-darkBtn').on('click',function(){
-    $('.idx-footer-darkBtn').toggleClass('darkOn')
-  })
 
   getDB()
 
@@ -35,10 +26,23 @@ const getDB = function(){
       toDoStore.onerror = function(e){
         console.log("DataBase Error: "+e.target.errorCode)
       }
-      toDoStore.getAll().onsuccess = function(e){
-        var result = e.target.result;
-        return addToDo(result);
-      };
+      // IDBRequest
+      var cursor = toDoStore.openCursor();
+      var cursorResult = new Array();
+      cursor.onsuccess = function(e) {
+        let cursor = e.target.result;
+        let today = new Date().setHours(0,0,0,0)
+        if ( cursor ) {
+          let targetDate = new Date(cursor.value.targetDate)
+          if (targetDate >= today){
+            cursorResult.push(cursor.value); 
+            console.log(cursorResult)
+          }
+          cursor.continue();
+        }
+        return addToDo(cursorResult);
+      }
+      // return addToDo(cursorResult);
     }
   }
 }

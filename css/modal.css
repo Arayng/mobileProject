@@ -1,0 +1,155 @@
+/* 추가하기 모달창 */
+.addModal {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 134;
+  background-color: rgba(112, 112, 112, 0.38);
+  justify-content: center;
+  align-items: center;
+}
+
+.addModal-bg {
+  width: 440px;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.addModal-head {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+
+.addModal-head h4 {
+  font-size: 18px;
+  line-height: 32px
+}
+
+.addModal-close {
+  width: 32px;
+  height: 32px;
+}
+
+.addModal-body {
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.addModal-add-label,
+.addModal-date-label {
+  color: #999;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+.addModal-add,
+.addModal-date {
+  width: 100%;
+  height: 32px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  padding: 0 5px;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  transition: border 0.4s;
+}
+
+.addModal-add:focus {
+  outline: none;
+  border-bottom: 2px solid #ffaf91;
+}
+
+.addModal-date {
+  width: 100px;
+  position: relative;
+  border: none;
+  transition: background 0.4s;
+  background: url(../images/icons/calendar-black.png) no-repeat right center / 28px 28px;
+}
+
+.addModal-date:focus {
+  outline: none;
+}
+
+.addModal-date::-webkit-clear-button,
+.addModal-date::-webkit-inner-spin-button {
+  display: none;
+}
+
+.addModal-date::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.addModal-date::before {
+  content: attr(data-placeholder);
+  width: 100%;
+  font-weight: normal;
+  font-size: 16px;
+  font-family: "Pretendard", "맑은 고딕", 'Open Sans', sans-serif;
+}
+
+.date-group {
+  height: 32px;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.addModal-foot {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.addModal-submit {
+  width: 22%;
+  padding: 7px 0;
+  margin-right: 10px;
+  font-size: 17px;
+  background-color: #ffaf91;
+  color: #fff;
+  border: 1px solid #ffaf91;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: background 0.4s;
+}
+
+.addModal-submit:hover {
+  background-color: #fd8d65;
+}
+
+
+/* add snackbar 팝업창 */
+.snackBar {
+  width: 200px;
+  color: white;
+  line-height: 38px;
+  padding: 3px 0 0;
+  text-align: center;
+  background-color: #ffaf91;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 4px #bbb;
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  margin-left: -100px;
+  display: none;
+}

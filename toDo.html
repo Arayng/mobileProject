@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamker</title>
+  <link rel="shotrcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="images/favicon/favicon-32x32.png" type="image/png" sizes="32x32">
+  <script src="js/installIDB.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+<!-- 풀 캘린더 -->
+  <!-- <link rel="stylesheet" href="library/fullcalender/main.min.css">
+  <script src="library/fullcalender/package.json"></script>
+  <script src="library/fullcalender/main.min.js"></script> -->
+
+  <script src="js/prefixfree.min.js"></script>
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/chkList.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <script src="js/menu.js"></script>
+  <script src="js/toDo.js"></script>
+  <script src="js/modal.js"></script>
+</head>
+<body>
+  <div class="pc-splash"></div>
+  <header class="idx-header">
+    <h1 class="idx-logo"><a href="index.html"><img src="images/logo-full.svg" alt="Hamker"></a></h1>
+    </div>
+    <a href="#" class="nav-btn">메뉴 열기</a>
+    <nav class="nav">
+      <h2 class="hide">주요 메뉴</h2>
+      <div class="nav-bg">
+        <ul class="nav-menu">
+          <li><a href="toDO.html" class="nav-item">체크리스트</a></li>
+          <li><a href="#" class="nav-item">달력</a></li>
+          <li><a href="#" class="nav-item">가계부</a></li>
+          <li><a href="#" class="nav-item">스토어</a></li>
+          <li><a href="#" class="nav-item">설정</a></li>
+        </ul>
+        <a href="#" class="nav-btn nav-close">메뉴 닫기</a>
+      </div>
+    </nav>
+  </header>
+  <main class="chk-main">
+    <div class="chk-main-container">
+      <div class="chk-main-header">
+        <a href="#" class="chk-main-h-icon" id="backBtn"><i class="ham-icons i-back">뒤로가기</i></a>
+        <div class="chk-main-h-title">체크리스트</div>
+        <div class="icon-group">
+          <a href="#" class="chk-main-h-icon" id="addModal"><i class="ham-icons i-add">추가하기</i></a>
+        </div>
+      </div>
+      <div class="chk-main-content">
+        <div class="chk-content-title">
+          <h3></h3>
+        </div>
+        <hr class="chk-main-line">
+        <div class="chk-content-item accordion" id="content-container">
+        </div>
+        <div class="chk-miss-container">
+          <div class="miss-header">
+            <h3>지난 일정</h3>
+            <div>
+              <a href="#" class="miss-h-icon" id="removeAll"><i class="ham-icon i-empty"></i></a>
+            </div>
+          </div>
+          <div class="miss-item accordion" id="miss-container">
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+<!-- 추가하기 모달 -->
+  <div class="addModal">
+    <div class="addModal-bg">
+      <div class="addModal-head">
+        <h4>일정 추가</h4>
+        <a href="#" class="addModal-close"><i class="ham-icons i-del">닫기</i></a>
+      </div>
+      <div class="addModal-body">
+        <label for="addModal-add" class="addModal-add-label">할 일</label>
+        <input type="text" class="addModal-add" id="addModal-add">
+        <div class="date-group">
+          <label for="addModal-date" class="addModal-date-label">목표 일</label>
+          <input type="date" class="addModal-date" id="addModal-date" data-placeholder="" min="" value="">
+        </div>
+      </div>
+      <div class="addModal-foot">
+        <button type="button" class="addModal-submit">추가하기</button>
+      </div>
+    </div>
+  </div>
+
+<!-- 알람 -->
+  <footer class="idx-footer">
+    <h2 class="hide">전체메뉴, 회사소개 및 이용약관</h2>
+    <div class="idx-footer-container">
+      <div class="idx-footer-menu">
+        <ul class="idx-footer-menu-cont">
+          <li><a href="#">월간달력</a></li>
+          <li><a href="#">주간달력</a></li>
+          <li><a href="#">체크리스트</a></li>
+          <li><a href="#">가계부</a></li>
+        </ul>
+        <ul class="idx-footer-menu-cont">
+          <li><a href="#">내 정보</a></li>
+          <li><a href="#">스토어</a></li>
+          <li><a href="#">공지사항</a></li>
+          <li><a href="#">고객센터</a></li>
+        </ul>
+        <ul class="idx-footer-terms">
+          <li><a href="#">개인정보활용 방침</a></li>
+          <li><a href="#">이용약관</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="idx-footer-dark">
+      <p>다크 모드</p>
+      <div class="idx-footer-darkBtn">
+        <div class="idx-darkBtn"></div>
+      </div>
+    </div> -->
+    <div class="idx-footer-copyright">
+      <p>Copyright (c) Hamker.com All rights reserved.</p>
+      <p class="idx-footer-contact">Contact Us, arayng@gmail.com</p>
+    </div>
+  </footer>
+
+<!-- 스낵 팝업 -->
+<div class="snackBar add">
+  <p>일정이 추가 되었습니다.</p>
+</div>
+<div class="snackBar del">
+  <p>일정이 삭제 되었습니다.</p>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="js/swiperSetting.js"></script>
+</body>
+</html>

@@ -1,274 +1,215 @@
-@media screen and (max-width: 959px) {
-  .chk-main {
-    width: 100%;
-    height: auto;
-    min-height: 667px;
-    position: relative;
-  }
-
-  .chk-main-line {
-    margin: 5px 0;
-    height: 1px;
-    border: 0;
-    background-color: #707070;
-  }
-
-  .chk-main-header {
-    height: 62px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 5px 5px -5px #90909070 inset;
-  }
-
-  .chk-main-header.scroll {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #fff;
-    box-shadow: 0 5px 5px -5px #90909070;
-  }
-
-  .chk-main-h-icon {
-    display: block;
-    width: 7vw;
-    height: 7vw;
-    max-width: 32px;
-    max-height: 32px;
-    padding: 0 10px;
-  }
-
-  .chk-main-h-title {
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 0.1rem;
-  }
-
-  .chk-main-content {
-    width: 80%;
-    min-width: 320px;
-    height: auto;
-    min-height: 605px;
-    margin: 15px auto;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.16);
-    box-sizing: border-box;
-  }
-
-  .chk-content-title {
-    display: flex;
-  }
-
-  .chk-content-title h3 {
-    font-size: 22px;
-    font-weight: bold;
-    color: #707070;
-  }
-
-  .chk-content-item {
-    padding: 10px 5px;
-    box-sizing: border-box;
-  }
-
-  .chklist-input {
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    position: absolute;
-    left: -999px;
-    z-index: -1000;
-  }
-
-  .chklist-input+.chklist-label {
-    display: inline-block;
-    max-width: 170px;
-    max-height: 19px;
-    padding-left: 25px;
-    background: url(../images/icons/chkbox.png) no-repeat 0 0 / 19px auto;
-    vertical-align: text-bottom;
-    white-space: nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-    cursor: pointer;
-  }
-
-  .chklist-input:checked+.chklist-label {
-    background-position: 0 -19px;
-  }
-
-  .chklist-input+.chklist-label.complete {
-    color: #999;
-    text-decoration: line-through;
-  }
-
-  .chklist-wrap {
-    height: 32px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .chklist-info {
-    display: flex;
-    align-items: center
-  }
-
-  .chklist-goal {
-    font-size: 12px;
-    white-space: nowrap;
-    margin-right: 2px;
-    color: #707070;
-  }
-
-  .chklist-delete {
-    display: inline-block;
-    width: 7vw;
-    height: 7vw;
-    max-width: 32px;
-    max-height: 32px;
-  }
+.chk-main {
+  width: 100%;
+  height: auto;
+  min-height: 667px;
+  position: relative;
+  box-shadow: 0 5px 5px -5px #90909070 inset;
 }
 
-/* 추가하기 모달창 */
-.addModal {
+.chk-main-line {
+  margin: 5px 0;
+  height: 1px;
+  border: 0;
+  background-color: #707070;
+}
+
+.chk-main-header {
+  width: 95%;
+  height: 62px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chk-main-header.scroll {
   width: 100%;
-  height: 100%;
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 134;
-  background-color: rgba(112, 112, 112, 0.38);
-  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0 5px 5px -5px #90909070;
+}
+
+.chk-main-h-icon {
+  display: block;
+  width: 7vw;
+  height: 7vw;
+  max-width: 32px;
+  max-height: 32px;
+  padding: 0 10px;
+}
+
+.chk-main-h-title {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+.chk-main-content {
+  width: 80%;
+  min-width: 320px;
+  height: auto;
+  min-height: 605px;
+  margin: 15px auto;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.16);
+  box-sizing: border-box;
+}
+
+.chk-content-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chk-content-title h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #707070;
+}
+
+.chk-content-item {
+  height: 300px;
+  padding: 10px 5px;
+  box-sizing: border-box;
+}
+
+.chklist-chkbox {
+  display: flex;
   align-items: center;
 }
 
-.addModal-bg {
-  width: 440px;
-  height: 300px;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 10px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.addModal-head {
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-}
-
-.addModal-head h4 {
-  font-size: 18px;
-  line-height: 32px
-}
-
-.addModal-close {
-  width: 32px;
-  height: 32px;
-}
-
-.addModal-body {
-  padding: 10px 0;
-  box-sizing: border-box;
-}
-
-.addModal-add-label,
-.addModal-date-label {
-  color: #999;
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
-  margin-right: 15px;
-  white-space: nowrap;
-}
-
-.addModal-add,
-.addModal-date {
-  width: 100%;
-  height: 32px;
-  border: none;
-  border-bottom: 2px solid #ddd;
-  padding: 0 5px;
-  box-sizing: border-box;
-  margin-bottom: 30px;
-  transition: border 0.4s;
-}
-
-.addModal-add:focus {
-  outline: none;
-  border-bottom: 2px solid #ffaf91;
-}
-
-.addModal-date {
-  width: 100px;
-  position: relative;
-  border: none;
-  transition: background 0.4s;
-  background: url(../images/icons/calendar.png) no-repeat right center / 28px 28px;
-}
-
-.addModal-date:focus {
-  outline: none;
-}
-
-.addModal-date::-webkit-clear-button,
-.addModal-date::-webkit-inner-spin-button {
-  display: none;
-}
-
-.addModal-date::-webkit-calendar-picker-indicator {
+.chklist-input {
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
+  left: -999px;
+  z-index: -1000;
+}
+
+.chklist-input+.chklist-label {
+  display: inline-block;
+  max-width: 170px;
+  max-height: 19px;
+  padding-left: 25px;
+  background: url(../images/icons/chkbox.png) no-repeat 0 0 / 19px auto;
+  vertical-align: text-bottom;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
   cursor: pointer;
 }
 
-.addModal-date::before {
-  content: attr(data-placeholder);
-  width: 100%;
-  font-weight: normal;
-  font-size: 16px;
-  font-family: "Pretendard", "맑은 고딕", 'Open Sans', sans-serif;
+.chklist-input:checked+.chklist-label {
+  background-position: 0 -19px;
 }
 
-.date-group {
+.chklist-input+.chklist-label.complete {
+  color: #999;
+  text-decoration: line-through;
+}
+
+.chklist-wrap {
   height: 32px;
+  margin-bottom: 10px;
   display: flex;
-  margin-bottom: 30px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.addModal-foot {
+.chklist-info {
   display: flex;
-  justify-content: flex-end;
+  align-items: center
 }
 
-.addModal-submit {
-  width: 22%;
-  padding: 7px 0;
-  margin-right: 10px;
-  font-size: 17px;
-  background-color: #ffaf91;
-  color: #fff;
-  border: 1px solid #ffaf91;
-  border-radius: 5px;
+.chklist-goal {
+  font-size: 12px;
+  white-space: nowrap;
+  margin-right: 2px;
+  color: #707070;
+}
+
+.chklist-delete {
+  display: inline-block;
+  width: 7vw;
+  height: 7vw;
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.chklist-warning {
+  display: inline-block;
+  width: 6vw;
+  height: 6vw;
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.chk-miss-container {
+  height: 300px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  padding: 10px;
   box-sizing: border-box;
-  transition: background 0.4s;
+  overflow: hidden;
 }
 
-.addModal-submit:hover {
-  background-color: #fd8d65;
+.chk-miss-container .chklist-goal {
+  font-size: 13px;
+  color: #f7323f
 }
+
+.miss-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.miss-header h3 {
+  font-size: 18px;
+  color: #f7323f;
+}
+
+.miss-h-icon {
+  display: inline-block;
+  width: 7vw;
+  height: 7vw;
+  max-width: 28px;
+  max-height: 28px;
+}
+
+.miss-item {
+  height: 228px;
+}
+
+/* scroll bar 모음 */
+
+.accordion {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.accordion::-webkit-scrollbar {
+  width: 4px;
+}
+.accordion::-webkit-scrollbar-track{
+  background-color: transparent;
+}
+
+.accordion::-webkit-scrollbar-thumb{
+  border-radius: 3px;
+  background-color: rgba(153, 153, 153, 0.62);
+}
+
+.accordion::-webkit-scrollbar-button{
+  width: 0;
+  height: 0;
+}
+

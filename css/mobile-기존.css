@@ -22,7 +22,7 @@ button {
   font-family: "Pretendard", "맑은 고딕", 'Open Sans', sans-serif;
 }
 
-html, body {
+body {
   min-width: 320px;
   min-height: 320px;
 }
@@ -70,10 +70,6 @@ fieldset {
   border: none;
 }
 
-.flex-box{
-  display: flex;
-  align-items: center;
-}
 /* ****************** reset css end ****************** */
 
 
@@ -217,77 +213,63 @@ fieldset {
     position: relative;
     margin: 50px auto 0;
   }
-  .idx-icon{
-    display: inline-block;
-    width: 7vw;
-    height: 7vw;
-    max-width: 28px;
-    max-height: 28px;
-  }
+
   /* contens summary(quick) */
 
+  .idx-slide-container {
+    width: 100%;
+    height: min(72.55vmin, 312px);
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .idx-slide-wrap {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   .idx-cont-wrap {
-    width: 81%;
-    height: 303px;
+    width: 81.396vmin;
     margin: 0 auto 10px;
     border-radius: 10px;
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.16);
+
     overflow: hidden;
   }
 
   .idx-cont-box {
-    width: 100%;
-    margin: 0 auto 20px;
+    width: 81.396vmin;
+    height: min(65.12vmin, 280px);
+    margin: auto;
     box-sizing: border-box;
   }
 
-  .cont-head{
-    width: 94%;
+  .idx-cont-title {
+    width: 94.29%;
     margin: auto;
-    border-bottom: 1px solid rgba(153, 153, 153, 0.62);
+    border-bottom: 1px solid #707070;
     padding: 15px 5px 9px;
     box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .idx-cont-title {
-    font-size: 1.5rem;
+    font-size: min(4.187vw, 22px);
     font-weight: bold;
-    padding-right: 10px;
   }
 
   /* cont-chklist */
   .idx-chklist {
-    width: 94%;
-    height: 230px;
-    margin: 19px auto 0;
-    padding: 1px 5px;
+    width: 94.29%;
+    height: min(45.12vmin, 180px);
+    margin: 0 auto 20px;
+    padding: 19px 5px 0;
     box-sizing: border-box;
-    overflow-y: scroll;
-  }
-
-  .idx-chklist::-webkit-scrollbar {
-    width: 4px;
-  }
-  .idx-chklist::-webkit-scrollbar-track{
-    background-color: transparent;
-  }
-  
-  .idx-chklist::-webkit-scrollbar-thumb{
-    border-radius: 3px;
-    background-color: rgba(153, 153, 153, 0.62);
-  }
-  
-  .idx-chklist::-webkit-scrollbar-button{
-    width: 0;
-    height: 0;
+    overflow: hidden;
   }
 
   .idx-chklist-box {
-    height: 20%;
-    max-height: 20px;
-    margin-bottom: min(10%, 20px);
+    height: min(5.117vw, 22px);
+    margin-bottom: min(4.652vw, 20px);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -354,6 +336,12 @@ fieldset {
   }
 
   /* more btn */
+  .idx-footer-box {
+    text-align: end;
+    padding: 0 min(3.488vw, 15px);
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
 
   .idx-chklist-more {
     font-size: min(3.256vw, 16px);
@@ -385,49 +373,49 @@ fieldset {
 
   /******* banner *******/
   .idx-banner-wrap {
-    width: 81%;
-    margin: 70px auto 0;
+    width: 95.35vmin;
+    height: 32.559vmin;
+    margin: min(11.627vw, 50px) auto 0;
     border-radius: 10px;
+    background-image: url(../images/banner_2x.png);
+    background-repeat: no-repeat;
+    background-size: contain;
     box-sizing: border-box;
     overflow: hidden;
-    position: relative;
   }
 
   .idx-banner {
-    width: 100%;
-  }
-
-  .idx-banner-link{
     display: block;
-    width: 30%;
+    width: 33.954vmin;
+    height: 6.977vmin;
+    margin: 24.390% 3.659% 2.44% 60.732%;
+    text-indent: -9999px;
     overflow: hidden;
-    position: absolute;
-    bottom: 7%;
-    right: 6%;
-  }
-  .idx-banner-link img{
-    width: 100%;
+    background: url(../images/banner-link_2x.png) no-repeat;
+    background-size: contain;
   }
 
   /******* quick menu *******/
   .idx-quick-wrap {
-    width: 81%;
-    margin: 70px auto 0;
+    width: 95.35vmin;
+    margin: min(11.627vw, 50px) auto 0;
+  }
+
+  .idx-quick {
     display: flex;
     justify-content: space-between;
   }
 
-  .idx-quick-wrap li a {
-    font-size: clamp(9px, 4vw, 16px);
-    line-height: 1.5em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .idx-quick li {
+    text-align: center;
   }
-  .idx-quick-wrap li a img{
+
+  .idx-quick li a {
     display: block;
-    width: 80%;
-    margin-bottom: 10px;
+    width: 16.28vmin;
+    font-size: min(3.721vw, 16px);
+    line-height: 1.5;
+    padding-top: 92.858%;
   }
 
   /* 임시 */
@@ -494,7 +482,7 @@ fieldset {
     left: 0;
   }
 
-/******** footer ********/
+  /******** footer ********/
   .idx-footer {
     position: relative;
     width: 100%;
@@ -719,5 +707,7 @@ fieldset {
   .idx-notice-wrap{
     max-width: 760px;
   }
-
+  .idx-banner{
+    max-width: 270px;
+  }
 }

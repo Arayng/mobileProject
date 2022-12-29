@@ -16,25 +16,22 @@
 
   <script src="js/prefixfree.min.js"></script>
   <link rel="stylesheet" href="css/mobile.css">
-  <link rel="stylesheet" href="css/modal.css">
   <script src="js/menu.js"></script>  
   <script src="js/mobile.js"></script>
-  <script src="js/modal.js"></script>
-
   <!-- modal -->
   <link rel="stylesheet" href="css/acctbModal.css">
   <script src="js/acctbModal.js"></script>
 </head>
 <body>
   <header class="idx-header">
-    <h1 class="idx-logo"><a href="index.html"><img src="images/logo-full.svg" alt="Hamker"></a></h1>
+    <h1 class="idx-logo"><a href="moblieIndex.html"><img src="images/logo-full.svg" alt="Hamker"></a></h1>
     </div>
     <a href="#" class="nav-btn">메뉴 열기</a>
     <nav class="nav">
       <h2 class="hide">주요 메뉴</h2>
       <div class="nav-bg">
         <ul class="nav-menu">
-          <li><a href="toDo.html" class="nav-item">체크리스트</a></li>
+          <li><a href="mobileChecklist.html" class="nav-item">체크리스트</a></li>
           <li><a href="#" class="nav-item">달력</a></li>
           <li><a href="#" class="nav-item">가계부</a></li>
           <li><a href="#" class="nav-item">스토어</a></li>
@@ -46,54 +43,91 @@
   </header>
   <main class="idx-main">
     <h2 class="hide">메인 컨텐츠</h2>
-    <section id="contentSummary">
-      <h3 class="hide">요약보기(슬라이드)</h3>
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="idx-cont-wrap">
-              <div class="idx-cont-box">
-                <div class="cont-head">
-                  <div class="flex-box">
-                    <h3 class="idx-cont-title">오늘의 할 일</h3>
-                    <a href="#" class="idx-chklist-more">더보기</a>
-                  </div>
-                  <a href="#" class="idx-icon" id="addModal"><i class="ham-icons i-add">추가하기</i></a>
-                </div>
-                <div class="idx-chklist" id="content-container">
-                </div>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <section class="idx-cont-wrap">
+            <div class="idx-cont-box">
+              <h3 class="idx-cont-title">오늘의 할 일</h3>
+              <div class="idx-chklist" id="content-container">
+              </div>
+              <div class="idx-footer-box">
+                <a href="./mobileChecklist.html" class="idx-chklist-more">더보기</a>
               </div>
             </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="idx-cont-wrap">
-              <div class="idx-cont-box">
-                <div class="cont-head">
-                  <h3 class="idx-cont-title">가계부</h3>
-                  <a href="#" class="idx-chklist-more">더보기</a>
-                </div>
+          </section>
+        </div>
+        <div class="swiper-slide">
+          <section class="idx-cont-wrap">
+            <div class="idx-cont-box">
+              <h3 class="idx-cont-title">가계부</h3>
+    
+              <div class="idx-footer-box">
+                <a href="#" class="idx-chklist-more">더보기</a>
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </div>
-      <div class="idx-cont-pager">
-      </div>
-    </section>
-    <section id="event">
+    </div>
+    <div class="idx-cont-pager">
+    </div>
+    <section class="idx-banner-wrap">
       <h3 class="hide">이벤트</h3>
-      <div class="idx-banner-wrap">
-        <img src="images/banner_2x.png" alt="나만의 달력 꾸미기(이벤트 배너)" class="idx-banner">
-        <a href="#" class="idx-banner-link"><img src="images/banner-link_2x.png" alt="스토어 바로가기"></a>
-      </div>
+      <a href="#" class="idx-banner">
+        스토어 바로가기
+      </a>
     </section>
-    <section id="quickMenu">
+    <section class="idx-quick-wrap">
       <h3 class="hide">퀵 메뉴</h3>
-      <ul class="idx-quick-wrap">
-        <li><a href="#"><img src="images/temp-bg_2x.png" alt="quick menu icon">체크리스트</a></li>
-        <li><a href="#"><img src="images/temp-bg_2x.png" alt="quick menu icon">가계부</a></li>
-        <li><a href="#"><img src="images/temp-bg_2x.png" alt="quick menu icon">스토어</a></li>
-        <li><a href="#"><img src="images/temp-bg_2x.png" alt="quick menu icon">공지사항</a></li>
+      <ul class="idx-quick">
+        <li>
+          <a href="#">달력보기</a>
+        </li>
+        <li>
+          <a href="#">체크리스트</a>
+        </li>
+        <li>
+          <a href="#">가계부</a>
+        </li>
+        <li>
+          <a href="#">스토어</a>
+        </li>
+      </ul>
+    </section>
+    <section class="idx-notice-wrap">
+      <h3 class="idx-notice-title"><a href="#">공지 사항</a></h3>
+      <ul class="idx-notice-cont">
+        <li>
+          <h5 class="idx-notice-cont-header">게시글 제목1</h5>
+          <span class="idx-notice-cont-meta">2022. 12. 07</span>
+          <a href="#" class="idx-notice-cont-link"></a>
+        </li>
+        <li>
+          <h5 class="idx-notice-cont-header">게시글 제목2</h5>
+          <span class="idx-notice-cont-meta">2022. 12. 07</span>
+          <a href="#" class="idx-notice-cont-link"></a>
+        </li>
+        <li>
+          <h5 class="idx-notice-cont-header">게시글 제목3</h5>
+          <span class="idx-notice-cont-meta">2022. 12. 07</span>
+          <a href="#" class="idx-notice-cont-link"></a>
+        </li>
+        <li>
+          <h5 class="idx-notice-cont-header">게시글 제목4</h5>
+          <span class="idx-notice-cont-meta">2022. 12. 07</span>
+          <a href="#" class="idx-notice-cont-link"></a>
+        </li>
+        <li>
+          <h5 class="idx-notice-cont-header">게시글 제목5</h5>
+          <span class="idx-notice-cont-meta">2022. 12. 07</span>
+          <a href="#" class="idx-notice-cont-link"></a>
+        </li>
+        <li>
+          <h5 class="idx-notice-cont-header">게시글 제목6</h5>
+          <span class="idx-notice-cont-meta">2022. 12. 07</span>
+          <a href="#" class="idx-notice-cont-link"></a>
+        </li>
       </ul>
     </section>
   </main>
@@ -130,35 +164,6 @@
       <p class="idx-footer-contact">Contact Us, arayng@gmail.com</p>
     </div>
   </footer>
-<!--------- 모달 모음 --------->
-  <!-- 추가하기 모달 -->
-  <div class="addModal">
-    <div class="addModal-bg">
-      <div class="addModal-head">
-        <h4>일정 추가</h4>
-        <a href="#" class="addModal-close"><i class="ham-icons i-del">닫기</i></a>
-      </div>
-      <div class="addModal-body">
-        <label for="addModal-add" class="addModal-add-label">할 일</label>
-        <input type="text" class="addModal-add" id="addModal-add">
-        <div class="date-group">
-          <label for="addModal-date" class="addModal-date-label">목표 일</label>
-          <input type="date" class="addModal-date" id="addModal-date" data-placeholder="" min="" value="">
-        </div>
-      </div>
-      <div class="addModal-foot">
-        <button type="button" class="addModal-submit">추가하기</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 스낵 팝업 -->
-  <div class="snackBar add">
-    <p>일정이 추가 되었습니다.</p>
-  </div>
-  <div class="snackBar del">
-    <p>일정이 삭제 되었습니다.</p>
-  </div>
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   <script src="js/swiperSetting.js"></script>
 </body>
