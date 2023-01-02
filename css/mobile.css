@@ -91,7 +91,7 @@ fieldset {
     height: 13.954vmin;
     max-height: 76px;
     position: relative;
-    margin: 35px auto 0;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;

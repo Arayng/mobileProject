@@ -30,13 +30,14 @@ $(function(){
     });
     // submit 이벤트
     $('.addModal-submit').on('click', function () {
-      $('.addModal').css('display', 'none');
       let toDo = $('#addModal-add').val();
       let date = $('#addModal-date').val();
-      let data = writeData(toDo, date)
-      writeDB(data)
-      modalReset()
-      snackPopUp('add')
+      console.log('뭔데?')
+      // $('.addModal').css('display', 'none');
+      // let data = writeData(toDo, date)
+      // writeDB(data)
+      // modalReset()
+      // snackPopUp('add')
       return false;
     })
   
@@ -51,7 +52,7 @@ $(function(){
     // })
     // 스낵알람
     function snackPopUp(action) {
-      $(`.snackBar.${action}`).clearQueue().stop().slideDown(300).delay(800).fadeOut(300)
+      $(`.snackBar.${action}`).clearQueue().slideDown(300).delay(800).fadeOut(300)
     }
 })
 

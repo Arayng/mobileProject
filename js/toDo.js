@@ -74,13 +74,17 @@ $(function () {
   });
   // submit 이벤트
   $('.addModal-submit').on('click', function () {
-    $('.addModal').css('display', 'none');
     let toDo = $('#addModal-add').val();
     let date = $('#addModal-date').val();
-    let data = writeData(toDo, date)
-    writeDB(data)
-    modalReset()
-    snackPopUp('add')
+    if(!toDo){
+      snackPopUp('null')
+    } else {
+      $('.addModal').css('display', 'none');
+      let data = writeData(toDo, date)
+      writeDB(data)
+      modalReset()
+      snackPopUp('add')
+    }
     return false;
   })
 
