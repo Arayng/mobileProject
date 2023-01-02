@@ -22,6 +22,18 @@ $(function(){
   });
 //********* 제이쿼리 끝 *********//
 })
+const dateReplace = function (e) {
+  if (e == "") {
+    value = "";
+  } else {
+    let date = new Date(e);
+    let month = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OC', 'NOV', 'DEC'];
+    value = `${month[date.getMonth()]} ${date.getDate()}`
+  }
+  return value;
+}
+
+
 const installDB = function(){
   var db = null;
   var request = window.indexedDB.open('Hamker');
