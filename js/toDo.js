@@ -203,7 +203,7 @@ const addToDo = function (d) {
     let target = document.getElementById('content-container');
     let templete = `
       <div class="placeholder">
-        <p>일정이 없습니다. 일정을 추가해주세요.</p>
+        <p>일정이 없습니다. 일정을 추가 해보세요.</p>
       </div>
     `
     target.innerHTML = templete
