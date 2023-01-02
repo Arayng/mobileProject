@@ -373,7 +373,6 @@ fieldset {
   }
 
   /* more btn */
-
   .idx-chklist-more {
     font-size: min(3.256vw, 16px);
     color: #707070;
@@ -400,6 +399,15 @@ fieldset {
     border-radius: 8px;
     background: #ffaf91;
     transition: width 0.2s;
+  }
+  /* placeholder */
+  .placeholder{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
   }
 
   /******* banner *******/

@@ -199,15 +199,57 @@ const classifyData = function (d) {
 }
 // db데이터 화면 출력하기
 const addToDo = function (d) {
-  let target = document.getElementById('content-container');
-  let templete = '';
-  target.innerHTML = '';
-  for (var i in d) {
-    let complete = (d[i].complete == 1) ? 'complete' : '';
-    let checked = (d[i].complete == 1) ? 'checked' : '';
-    templete += `
-      <div class="chklist-wrap"  data-id="${d[i].id}" data-rdate="${d[i].regiDate}" data-tdate="${d[i].targetDate}">
+  if(d.length == 0){
+    let target = document.getElementById('content-container');
+    let templete = `
+      <div class="placeholder">
+        <p>일정이 없습니다. 일정을 추가해주세요.</p>
+      </div>
+    `
+    target.innerHTML = templete
+  } else {
+    let target = document.getElementById('content-container');
+    let templete = '';
+    target.innerHTML = '';
+    for (var i in d) {
+      let complete = (d[i].complete == 1) ? 'complete' : '';
+      let checked = (d[i].complete == 1) ? 'checked' : '';
+      templete += `
+        <div class="chklist-wrap"  data-id="${d[i].id}" data-rdate="${d[i].regiDate}" data-tdate="${d[i].targetDate}">
+          <div class="chklist-chkbox">
+            <input type="checkbox" name="chklist_${d[i].id}" id="chklist_${d[i].id}" class="chklist-input" ${checked}>
+            <label for="chklist_${d[i].id}" class="chklist-label ${complete}">${d[i].toDo}</label>
+          </div>
+          <div class="chklist-info">
+            <span class="chklist-goal">${d[i].targetDate}</span>
+            <a href="#" class="chklist-delete"><i class="ham-icons i-del">삭제하기</i></a>
+          </div>
+        </div>
+      `
+    }
+    target.innerHTML = templete;
+  }
+}
+const pastToDo = function (d) {
+  if(d.length == 0){
+    let target = document.getElementById('miss-container');
+    let templete = `
+      <div class="placeholder">
+        <p>지난 일정이 없습니다.</p>
+      </div>
+    `
+    target.innerHTML = templete
+  } else {
+    let target = document.getElementById('miss-container');
+    let templete = '';
+    target.innerHTML = '';
+    for (var i in d) {
+      let complete = (d[i].complete == 1) ? 'complete' : '';
+      let checked = (d[i].complete == 1) ? 'checked' : '';
+      templete += `
+        <div class="chklist-wrap" data-id="${d[i].id}" data-rdate="${d[i].regiDate}" data-tdate="${d[i].targetDate}">
         <div class="chklist-chkbox">
+          <i class="chklist-warning ham-icons i-warning i-static"></i>
           <input type="checkbox" name="chklist_${d[i].id}" id="chklist_${d[i].id}" class="chklist-input" ${checked}>
           <label for="chklist_${d[i].id}" class="chklist-label ${complete}">${d[i].toDo}</label>
         </div>
@@ -216,32 +258,10 @@ const addToDo = function (d) {
           <a href="#" class="chklist-delete"><i class="ham-icons i-del">삭제하기</i></a>
         </div>
       </div>
-    `
+      `
+    }
+    target.innerHTML = templete;
   }
-  target.innerHTML = templete;
-}
-const pastToDo = function (d) {
-  let target = document.getElementById('miss-container');
-  let templete = '';
-  target.innerHTML = '';
-  for (var i in d) {
-    let complete = (d[i].complete == 1) ? 'complete' : '';
-    let checked = (d[i].complete == 1) ? 'checked' : '';
-    templete += `
-      <div class="chklist-wrap" data-id="${d[i].id}" data-rdate="${d[i].regiDate}" data-tdate="${d[i].targetDate}">
-      <div class="chklist-chkbox">
-        <i class="chklist-warning ham-icons i-warning i-static"></i>
-        <input type="checkbox" name="chklist_${d[i].id}" id="chklist_${d[i].id}" class="chklist-input" ${checked}>
-        <label for="chklist_${d[i].id}" class="chklist-label ${complete}">${d[i].toDo}</label>
-      </div>
-      <div class="chklist-info">
-        <span class="chklist-goal">${d[i].targetDate}</span>
-        <a href="#" class="chklist-delete"><i class="ham-icons i-del">삭제하기</i></a>
-      </div>
-    </div>
-    `
-  }
-  target.innerHTML = templete;
 }
 // 데이터 삭제 - 개별
 let delData = function (id) {

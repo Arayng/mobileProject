@@ -173,24 +173,34 @@ const classifyData = function (d) {
 }
 
 let addToDo = function(d){
-  let target = document.getElementById('content-container');
-  let templete = '';
-  target.innerHTML = '';
-  for(var i in d){
-    let complete = (d[i].complete == 1) ? 'complete' : '';
-    let checked = (d[i].complete == 1) ? 'checked' : '';
-    templete += `
-    <div class="idx-chklist-box" data-complete="${d[i].complete}" data-regidate="${d[i].regiDate}" data-id="${d[i].id}">
-      <input type="checkbox" name="chklist_${d[i].id}" id="chklist_${d[i].id}" class="idx-chklist-inpChk" ${checked}>
-      <label for="chklist_${d[i].id}" class="idx-chklist-labelChk ${complete}">${d[i].toDo}</label>
-      <div class="idx-chklist-info">
-        <span class="idx-chklist-goal">${d[i].targetDate}</span>
-        <a href="#" class="idx-chklist-delete"><i class="ham-icons i-del">삭제하기</i></a>
+  if(d.length == 0){
+    let target = document.getElementById('content-container');
+    let templete = `
+      <div class="placeholder">
+        <p>일정이 없습니다. 일정을 추가해주세요.</p>
       </div>
-    </div>
     `
+    target.innerHTML = templete
+  } else {
+    let target = document.getElementById('content-container');
+    let templete = '';
+    target.innerHTML = '';
+    for(var i in d){
+      let complete = (d[i].complete == 1) ? 'complete' : '';
+      let checked = (d[i].complete == 1) ? 'checked' : '';
+      templete += `
+      <div class="idx-chklist-box" data-complete="${d[i].complete}" data-regidate="${d[i].regiDate}" data-id="${d[i].id}">
+        <input type="checkbox" name="chklist_${d[i].id}" id="chklist_${d[i].id}" class="idx-chklist-inpChk" ${checked}>
+        <label for="chklist_${d[i].id}" class="idx-chklist-labelChk ${complete}">${d[i].toDo}</label>
+        <div class="idx-chklist-info">
+          <span class="idx-chklist-goal">${d[i].targetDate}</span>
+          <a href="#" class="idx-chklist-delete"><i class="ham-icons i-del">삭제하기</i></a>
+        </div>
+      </div>
+      `
+    }
+    target.innerHTML = templete;
   }
-  target.innerHTML = templete;
 }
 
 // 데이터 삭제 - 개별
