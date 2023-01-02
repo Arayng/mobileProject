@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <link rel="manifest" href="manifest.json">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hamker</title>
@@ -85,7 +86,7 @@
         <a href="#" class="idx-banner-link"><img src="images/banner-link_2x.png" alt="스토어 바로가기"></a>
       </div>
     </section>
-    <section id="quickMenu">
+    <section id="quickMenunn">
       <h3 class="hide">퀵 메뉴</h3>
       <ul class="idx-quick-wrap">
         <li><a href="#"><img src="images/temp-bg_2x.png" alt="quick menu icon">체크리스트</a></li>
@@ -102,14 +103,13 @@
         <ul class="idx-footer-menu-cont">
           <li><a href="#">월간달력</a></li>
           <li><a href="#">주간달력</a></li>
-          <li><a href="#">체크리스트</a></li>
+          <li><a href="toDo.html">체크리스트</a></li>
           <li><a href="#">가계부</a></li>
         </ul>
         <ul class="idx-footer-menu-cont">
-          <li><a href="#">내 정보</a></li>
           <li><a href="#">스토어</a></li>
+          <li><a href="#">문의하기</a></li>
           <li><a href="#">공지사항</a></li>
-          <li><a href="#">고객센터</a></li>
         </ul>
         <ul class="idx-footer-terms">
           <li><a href="#">개인정보활용 방침</a></li>
@@ -159,5 +159,15 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   <script src="js/swiperSetting.js"></script>
+  <!-- 서비스 워커 -->
+  <script>
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker
+      .register('./serviceWorker.js')
+      .then(()=>{
+        console.log("service worker registration complete")
+      })
+    }
+  </script>
 </body>
 </html>
