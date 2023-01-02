@@ -78,6 +78,7 @@ $(function () {
     let date = $('#addModal-date').val();
     if(!toDo){
       snackPopUp('null')
+      $('.addModal #addModal-add').focus();
     } else {
       $('.addModal').css('display', 'none');
       let data = writeData(toDo, date)
