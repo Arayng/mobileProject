@@ -97,8 +97,7 @@
   height: 100%;
   background: transparent;
   cursor: pointer;
-  text-indent: -999px;
-  overflow: hidden;
+  color: transparent
 }
 
 .addModal-date::before {
