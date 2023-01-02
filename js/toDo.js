@@ -45,17 +45,50 @@ $(function () {
     updateData(updateDataTarget)
   });
 
-  // 지난 일정 열기
-  let dropToggleChk = 0;
-  $('.i-drop').on('click', function () {
-    $(this).toggleClass('active');
-    dropToggleChk = (dropToggleChk == 1) ? 0 : 1;
-    let parentEle = ($(this).closest('.accordion').length) ? $(this).closest('.accordion') : $('.chk-content-item.accordion');
+//************************** addModal 인터렉션 **************************//
 
-    let nh = parentEle.innerHeight();
-    return false
+  $('.addModal-date').attr({
+    'data-placeholder': `${today().monthToString} ${today().today}`,
+    min: today().fullDate,
+    value: today().fullDate
+  });
+  // 날짜 선택
+  $('.addModal-date').on('change', function () {
+    $(this).attr('data-placeholder', dateReplace($(this).val()));
+  });
+  // 모달 온오프
+  $('#addModal').on('click', function () {
+    $('.addModal').css('display', 'flex');
+    $('.addModal #addModal-add').focus();
+    return false;
+  });
+  $('.addModal-close').on('click', function () {
+    $('.addModal').css('display', 'none');
+    return false;
+  });
+  // 외부영역 클릭하면 닫히는 이벤트
+  $(document).on('mouseup', e => {
+    if ($('.addModal-bg').has(e.target).length == 0) {
+      $('.addModal').css('display', 'none');
+    };
+  });
+  // submit 이벤트
+  $('.addModal-submit').on('click', function () {
+    $('.addModal').css('display', 'none');
+    let toDo = $('#addModal-add').val();
+    let date = $('#addModal-date').val();
+    let data = writeData(toDo, date)
+    writeDB(data)
+    modalReset()
+    snackPopUp('add')
+    return false;
   })
 
+  // 모달창 리셋 함수
+  function modalReset() {
+    $('.addModal-add').val('');
+    $('.addModal-date').val(today().fullDate).attr('data-placeholder', dateReplace(today().fullDate));
+  }
   function snackPopUp(action) {
     $(`.snackBar.${action}`).clearQueue().stop().slideDown(300).delay(800).fadeOut(300)
   }
@@ -266,57 +299,6 @@ const updateData = function (id) {
     }
   }
 }
-
-
-
-//************************** addModal 인터렉션 **************************//
-$(function(){
-  $('.addModal-date').attr({
-    'data-placeholder': `${today().monthToString} ${today().today}`,
-    min: today().fullDate,
-    value: today().fullDate
-  });
-  // 날짜 선택
-  $('.addModal-date').on('change', function () {
-    $(this).attr('data-placeholder', dateReplace($(this).val()));
-  });
-  // 모달 온오프
-  $('#addModal').on('click', function () {
-    $('.addModal').css('display', 'flex');
-    $('.addModal #addModal-add').focus();
-    return false;
-  });
-  $('.addModal-close').on('click', function () {
-    $('.addModal').css('display', 'none');
-    return false;
-  });
-  // 외부영역 클릭하면 닫히는 이벤트
-  $(document).on('mouseup', e => {
-    if ($('.addModal-bg').has(e.target).length == 0) {
-      $('.addModal').css('display', 'none');
-    };
-  });
-  // submit 이벤트
-  $('.addModal-submit').on('click', function () {
-    $('.addModal').css('display', 'none');
-    let toDo = $('#addModal-add').val();
-    let date = $('#addModal-date').val();
-    let data = writeData(toDo, date)
-    writeDB(data)
-    modalReset()
-    snackPopUp('add')
-    return false;
-  })
-
-  // 모달창 리셋 함수
-  function modalReset() {
-    $('.addModal-add').val('');
-    $('.addModal-date').val(today().fullDate).attr('data-placeholder', dateReplace(today().fullDate));
-  }
-  function snackPopUp(action) {
-    $(`.snackBar.${action}`).clearQueue().stop().slideDown(300).delay(800).fadeOut(300)
-  }
-})
 
 const today = function () {
 let date = new Date()
