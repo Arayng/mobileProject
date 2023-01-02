@@ -5,7 +5,10 @@
   position: relative;
   box-shadow: 0 5px 5px -5px #90909070 inset;
 }
-
+.chk-main-container{
+  max-width: 1200px;
+  margin: auto;
+}
 .chk-main-line {
   margin: 5px 0;
   height: 1px;
