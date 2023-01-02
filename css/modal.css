@@ -77,6 +77,8 @@
   position: relative;
   border: none;
   transition: background 0.4s;
+  text-indent: -999px;
+  overflow: hidden;
   background: url(../images/icons/calendar-black.png) no-repeat right center / 28px 28px;
 }
 
@@ -97,18 +99,16 @@
   height: 100%;
   background: transparent;
   cursor: pointer;
-  color: transparent
 }
 
 .addModal-date::before {
   content: attr(data-placeholder);
   width: 100%;
-  height: 100%;
   font-weight: normal;
   font-size: 14px;
   font-family: "Pretendard", "맑은 고딕", 'Open Sans', sans-serif;
-  background-color: #fff;
   color: #000;
+  text-indent: 0 !important;
   white-space: nowrap;
 }
 
