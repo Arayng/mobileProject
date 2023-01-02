@@ -1,5 +1,5 @@
 $(function(){
-
+  installDB()
   getDB()
   //******** 체크리스트 페이지 인터렉션 ********//
     
@@ -22,7 +22,23 @@ $(function(){
   });
 //********* 제이쿼리 끝 *********//
 })
-
+const installDB = function(){
+  var db = null;
+  var request = window.indexedDB.open('Hamker');
+  request.onerror = function(e) {
+    alert('hamker does not work in this browser');
+    console.log(e.target.errorCode)
+  };
+  request.onupgradeneeded = function(e) {
+    db = request.result;
+    let objectStore = db.createObjectStore('toDo',{keyPath: 'id',autoIncrement: true})
+    objectStore.createIndex("toDo", "toDo", { unique: false });
+    objectStore.createIndex("regiDate", "regiDate", { unique: false })
+    objectStore.createIndex("targetDate", "targetDate", { unique: false })
+    objectStore.createIndex("complete", "complete", { unique: false })
+    console.log('indexedDB Loaded')
+  }
+}
 let writeData = function (t, d) {
   return {
     toDo: t,

@@ -1,4 +1,8 @@
-
+//******** indexed DB ********//
+window.onload = function () {
+  installDB()
+  getDB()
+}
 
 $(function () {
   $('.chk-content-title h3').text(`${today().year}년 ${today().month}월 ${today().today}일`);
@@ -70,11 +74,23 @@ const dateReplace = function (e) {
   return value;
 }
 
-//******** indexed DB ********//
-window.onload = function () {
-  getDB()
+const installDB = function(){
+  var db = null;
+  var request = window.indexedDB.open('Hamker');
+  request.onerror = function(e) {
+    alert('hamker does not work in this browser');
+    console.log(e.target.errorCode)
+  };
+  request.onupgradeneeded = function(e) {
+    db = request.result;
+    let objectStore = db.createObjectStore('toDo',{keyPath: 'id',autoIncrement: true})
+    objectStore.createIndex("toDo", "toDo", { unique: false });
+    objectStore.createIndex("regiDate", "regiDate", { unique: false })
+    objectStore.createIndex("targetDate", "targetDate", { unique: false })
+    objectStore.createIndex("complete", "complete", { unique: false })
+    console.log('indexedDB Loaded')
+  }
 }
-
 let writeData = function (t, d) {
   return {
     toDo: t,
