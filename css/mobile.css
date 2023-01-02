@@ -215,6 +215,14 @@ fieldset {
   /******** header end ********/
   /******* contents ********/
   /* main */
+  .idx-main-bg{
+    width: 100%;
+    height: auto;
+    min-height: 667px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 5px -5px #90909070 inset;
+  }
   .idx-main {
     width: 95.35vw;
     min-width: 320px;
@@ -234,7 +242,7 @@ fieldset {
   .idx-cont-wrap {
     width: 81%;
     height: 303px;
-    margin: 0 auto 10px;
+    margin: 5px auto 10px;
     border-radius: 10px;
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.16);
     overflow: hidden;
