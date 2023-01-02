@@ -3,5 +3,6 @@ var swiper = new Swiper(".mySwiper", {
   slidesPerView: 1,			// 한 영역에 보이는 슬라이드 수
   pagination: {
     el: ".idx-cont-pager",
+    clickable : true
   },
 });

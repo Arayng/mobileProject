@@ -1,3 +1,5 @@
+
+
 $(function () {
   $('.chk-content-title h3').text(`${today().year}년 ${today().month}월 ${today().today}일`);
   // 뒤로가기 버튼
@@ -50,7 +52,11 @@ $(function () {
     return false
   })
 
-  //************** 제이쿼리 끝 **************//  
+  function snackPopUp(action) {
+    $(`.snackBar.${action}`).clearQueue().stop().slideDown(300).delay(800).fadeOut(300)
+  }
+
+//************** 제이쿼리 끝 **************//  
 })
 
 const dateReplace = function (e) {
@@ -66,8 +72,16 @@ const dateReplace = function (e) {
 
 //******** indexed DB ********//
 window.onload = function () {
-  installDB()
   getDB()
+}
+
+let writeData = function (t, d) {
+  return {
+    toDo: t,
+    regiDate: today().fullDate,
+    targetDate: d,
+    complete: 0
+  };
 }
 
 // 데이터 쓰기
@@ -81,20 +95,12 @@ const writeDB = function (writeData) {
     request.onerror = function (e) {
       alert('hamker does not work in this browser');
     };
-    request.onupgradeneeded = function (e) {
-      db = e.target.result;
-      var objectStore = db.createObjectStore('toDo', { keyPath: 'id', autoIncrement: true })
-      objectStore.createIndex("toDo", "toDo", { unique: false });
-      objectStore.createIndex("regiDate", "regiDate", { unique: false })
-      objectStore.createIndex("targetDate", "targetDate", { unique: false })
-      objectStore.createIndex("complete", "complete", { unique: false })
-    }
     request.onsuccess = function (e) {
       db = this.result;
       const toDoStore = db.transaction("toDo", "readwrite").objectStore("toDo");
       request = toDoStore.add(writeData);
       request.oncomplete = function () {
-        alert('추가 완료')
+
       }
       toDoStore.onerror = function (e) {
         console.log("DataBase Error: " + e.target.errorCode)
@@ -245,12 +251,66 @@ const updateData = function (id) {
   }
 }
 
-// 데이터 변환 -> 56번째 줄에서 사용
-let writeData = function (t, d) {
-  return {
-    toDo: t,
-    regiDate: today().fullDate,
-    targetDate: d,
-    complete: 0
-  };
+
+
+//************************** addModal 인터렉션 **************************//
+$(function(){
+  $('.addModal-date').attr({
+    'data-placeholder': `${today().monthToString} ${today().today}`,
+    min: today().fullDate,
+    value: today().fullDate
+  });
+  // 날짜 선택
+  $('.addModal-date').on('change', function () {
+    $(this).attr('data-placeholder', dateReplace($(this).val()));
+  });
+  // 모달 온오프
+  $('#addModal').on('click', function () {
+    $('.addModal').css('display', 'flex');
+    $('.addModal #addModal-add').focus();
+    return false;
+  });
+  $('.addModal-close').on('click', function () {
+    $('.addModal').css('display', 'none');
+    return false;
+  });
+  // 외부영역 클릭하면 닫히는 이벤트
+  $(document).on('mouseup', e => {
+    if ($('.addModal-bg').has(e.target).length == 0) {
+      $('.addModal').css('display', 'none');
+    };
+  });
+  // submit 이벤트
+  $('.addModal-submit').on('click', function () {
+    $('.addModal').css('display', 'none');
+    let toDo = $('#addModal-add').val();
+    let date = $('#addModal-date').val();
+    let data = writeData(toDo, date)
+    writeDB(data)
+    modalReset()
+    snackPopUp('add')
+    return false;
+  })
+
+  // 모달창 리셋 함수
+  function modalReset() {
+    $('.addModal-add').val('');
+    $('.addModal-date').val(today().fullDate).attr('data-placeholder', dateReplace(today().fullDate));
+  }
+  function snackPopUp(action) {
+    $(`.snackBar.${action}`).clearQueue().stop().slideDown(300).delay(800).fadeOut(300)
+  }
+})
+
+const today = function () {
+let date = new Date()
+let month = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+date = {
+  year: date.getFullYear(),
+  month: ((date.getMonth() + 1) < 10)? '0' + (date.getMonth() + 1) : date.getMonth() + 1,
+  monthToString: month[date.getMonth()],
+  today: (date.getDate() < 10)? '0'+date.getDate() : date.getDate(),
+  fullDate: `${date.getFullYear()}-${((date.getMonth() + 1) < 10)? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${(date.getDate() < 10)? '0'+date.getDate() : date.getDate()}`,
+}
+return date;
 }

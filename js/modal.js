@@ -1,3 +1,6 @@
+import {writeDB} from "toDo.js";
+import {writeDB} from "mobile.js";
+
 $(function(){
     //********** addModal 인터렉션 *********//
     $('.addModal-date').attr({
