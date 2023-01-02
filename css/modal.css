@@ -103,9 +103,11 @@
 .addModal-date::before {
   content: attr(data-placeholder);
   width: 100%;
+  height: 100%;
   font-weight: normal;
   font-size: 14px;
   font-family: "Pretendard", "맑은 고딕", 'Open Sans', sans-serif;
+  background-color: #fff;
   color: #000;
   white-space: nowrap;
 }
