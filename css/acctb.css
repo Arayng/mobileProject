@@ -1,0 +1,765 @@
+/************** hamker **************/
+/* ******************************** */
+
+/* ****************** 웹 폰트 ****************** */
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+
+/* ****************** reset css ****************** */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+button {
+  font-weight: normal;
+  font-size: 16px;
+  font-family: "Pretendard", "맑은 고딕", 'Open Sans', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ol,
+dl,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+address {
+  font-style: normal;
+}
+
+.hide {
+  overflow: hidden;
+  /* position: absolute; */
+  width: 0;
+  height: 0;
+  line-height: 0;
+  text-indent: -9999px
+}
+
+fieldset {
+  border: none;
+}
+
+/* ****************** reset css end ****************** */
+
+html,
+body {
+  height: 100%;
+}
+
+.acctb-header {
+  width: 100%;
+  height: 61px;
+  margin: auto;
+  border-top: 1px solid transparent;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.acctb-logo {
+  width: 217.5px;
+  height: 40px;
+}
+
+.acctb-logo a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.acctb-logo img {
+  width: 100%;
+  height: 100%;
+}
+
+.acctb-pc-nav {
+  width: calc(100% - 217.5px);
+}
+
+.acctb-pc-nav-menu {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.acctb-pc-nav-item {
+  display: block;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #999;
+  padding: 0 20px;
+  transition: color 0.5s, font-size 0.5s;
+}
+
+.acctb-pc-nav-item:hover {
+  font-size: 22px;
+  color: #ffa983;
+}
+
+/* 컨텐츠 레이아웃 */
+.acctb-content {
+  width: 100%;
+  height: calc(100% - 62px);
+  display: flex;
+}
+
+.acctb-content-left {
+  width: 1200px;
+  height: 100%;
+  box-shadow: 5px 0px 7px -7px #666;
+  overflow: hidden;
+}
+
+.acctb-content-right {
+  width: 720px;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.acctb-content-right.offContent {
+  width: 0;
+}
+
+.acctb-cont-header {
+  width: 100%;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ffa983;
+}
+
+/* 메뉴 모음 */
+.acctb-menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #ffa983;
+}
+
+
+.acctb-menu li {
+  width: 78px;
+  text-align: center;
+}
+
+.acctb-menu-item img {
+  width: 32px;
+  opacity: 0.8;
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.acctb-menu-item.plus img {
+  width: 28px;
+  padding-bottom: 2px;
+  margin-right: 15px;
+}
+.acctb-menu-item.alert img {
+  width: 28px;
+}
+
+.acctb-menu-item:hover img {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+/* 년월 */
+.acctb-year {
+  width: calc(100% - 234px);
+  text-align: center;
+  line-height: 1;
+}
+
+.acctb-year h3 {
+  font-size: 32px;
+  color: white;
+  font-weight: bold;
+}
+
+/* 달력 */
+.acctb-table-overflow {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.acctb-calender {
+  width: 100%;
+  height: calc(100% - 62px);
+}
+
+.acctb-calender thead th {
+  height: 24px;
+  line-height: 24px;
+  border-bottom: 1px solid #ccc;
+}
+
+.acctb-calender tbody {
+  overflow: hidden;
+}
+
+.weekend {
+  color: #faa07f;
+}
+
+/* 날짜 */
+.acctb-day {
+  width: calc(100%/7);
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: color 0.4s, background 0.4s, transform 0.4s;
+}
+
+.acctb-day.cellDisable {
+  color: #ccc;
+}
+
+.acctb-day.today {
+  background-color: rgb(238, 238, 238, 0.5);
+}
+
+.acctb-day:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.acctb-day:hover::after {
+  opacity: 0.3;
+  background-color: #eee;
+}
+
+
+/* 날짜 안에 */
+.acctb-day-in {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.day-in-date {
+  padding-top: 5px;
+  padding-left: 8px;
+  box-sizing: border-box;
+}
+
+.day-in-total {
+  width: 100%;
+  font-size: 14px;
+  line-height: 2;
+  padding-left: 4px;
+  padding-right: 4px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 15px;
+  font-style: normal;
+}
+
+/* 날짜 클릭 이벤트 */
+.acctb-day.clickOn {
+  transform: scale(1.05);
+  z-index: 10;
+  background: rgb(253, 231, 223);
+}
+
+.acctb-day.clickOn:hover::after {
+  opacity: 0.1;
+  background-color: #eee;
+}
+
+/* 컨텐츠 우측 */
+.acctb-content-right .acctb-cont-header {
+  justify-content: space-between;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.acctb-detail-date {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cont-close {
+  font-size: 18px;
+  font-weight: bold;
+  color: #707070;
+  margin-left: 23px;
+  padding-left: 30px;
+  padding-right: 10px;
+  background: url(../images/icons/main-more_4x.png) no-repeat;
+  background-position: 0 center;
+  background-size: 25px;
+}
+
+/* 내용 요약 */
+.acctb-summary {
+  width: 100%;
+  height: 110px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.acctb-summary-income,
+.acctb-summary-expend {
+  width: 39.86%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.income-summary-total .summary-total{
+  margin-right: 0.4em;
+  font-size: 18px;
+  font-weight: normal;
+  color: #5694f0
+}
+.expend-summary-total .summary-total{
+  margin-right: 0.4em;
+  font-size: 18px;
+  font-weight: normal;
+  color: #f7323f
+}
+.income-summary-category,
+.expend-summary-category{
+  font-size: max(14px,0.5vw);
+  color:#666;
+}
+.income-summary-total,
+.expend-summary-total,
+.income-summary-category,
+.expend-summary-category,
+.income-detail-amount,
+.income-detail-reason,
+.expend-detail-amount,
+.expend-detail-reason {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.acctb-detail {
+  width: 100%;
+  height: 690px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #eee;
+  font-size: 15px;
+}
+
+.acctb-detail-income,
+.acctb-detail-expend {
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.acctb-detail-income {
+  border-right: 1px solid #eee
+}
+
+.detail-title {
+  font-size: 18px;
+  letter-spacing: 0.4em;
+  font-weight: bold;
+}
+
+.detail-item {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-category {
+  font-size: 13px;
+  color: #666;
+  margin-left: 0.7em;
+}
+
+.income-detail,
+.expend-detail {
+  font-size: 1.1em;
+  margin-right: 4px;
+}
+
+.acctb-detail-income .detail-title,
+.income-detail {
+  color: #5694f0
+}
+
+.acctb-detail-expend .detail-title,
+.expend-detail {
+  color: #f7323f
+}
+
+/*********************************/
+/************* 790px *************/
+/*********************************/
+@media screen and (max-width: 790px) {
+
+  /* 컨텐츠 레이아웃 */
+  .acctb-content {
+    width: 100%;
+    height: calc(100% - 62px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .acctb-content-left {
+    width: 100%;
+    height: 100%;
+    box-shadow: 5px 0px 7px -7px #666;
+    overflow: hidden;
+  }
+
+  .acctb-content-right {
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: none;
+  }
+
+  .acctb-content-right.offContent {
+    height: 50%;
+  }
+
+  .acctb-cont-header {
+    width: 100%;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ffa983;
+  }
+
+  /* 메뉴 모음 */
+  .acctb-menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #ffa983;
+  }
+
+
+  .acctb-menu li {
+    width: 78px;
+    text-align: center;
+  }
+
+  .acctb-menu-item img {
+    width: 32px;
+    opacity: 0.8;
+    transition: opacity 0.5s, transform 0.5s;
+  }
+
+  .acctb-menu-item.plus img {
+    width: 28px;
+    padding-bottom: 2px;
+    margin-right: 15px;
+  }
+  .acctb-menu-item.alert img {
+    width: 28px;
+  }
+
+  .acctb-menu-item:hover img {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  /* 년월 */
+  .acctb-year {
+    width: calc(100% - 234px);
+    text-align: center;
+    line-height: 1;
+  }
+
+  .acctb-year h3 {
+    font-size: 32px;
+    color: white;
+    font-weight: bold;
+  }
+
+  /* 달력 */
+  .acctb-table-overflow {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .acctb-calender {
+    width: 100%;
+    height: calc(100% - 62px);
+  }
+
+  .acctb-calender thead th {
+    height: 24px;
+    line-height: 24px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .acctb-calender tbody {
+    overflow: hidden;
+  }
+
+  .weekend {
+    color: #faa07f;
+  }
+
+  /* 날짜 */
+  .acctb-day {
+    width: calc(100%/7);
+    vertical-align: top;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    transition: color 0.4s, background 0.4s, transform 0.4s;
+  }
+
+  .acctb-day.cellDisable {
+    color: #ccc;
+  }
+
+  .acctb-day.today {
+    background-color: rgb(238, 238, 238, 0.5);
+  }
+
+  .acctb-day:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .acctb-day:hover::after {
+    opacity: 0.3;
+    background-color: #eee;
+  }
+
+
+  /* 날짜 안에 */
+  .acctb-day-in {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .day-in-date {
+    padding-top: 5px;
+    padding-left: 8px;
+    box-sizing: border-box;
+  }
+
+  .day-in-total {
+    width: 100%;
+    font-size: 14px;
+    line-height: 2;
+    padding-left: 4px;
+    padding-right: 4px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    font-style: normal;
+  }
+
+  /* 날짜 클릭 이벤트 */
+  .acctb-day.clickOn {
+    transform: scale(1.05);
+    z-index: 10;
+    background: rgb(253, 231, 223);
+  }
+
+  .acctb-day.clickOn:hover::after {
+    opacity: 0.1;
+    background-color: #eee;
+  }
+
+  /* 컨텐츠 우측 */
+  .acctb-content-right .acctb-cont-header {
+    justify-content: space-between;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  .acctb-detail-date {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .cont-close {
+    font-size: 18px;
+    font-weight: bold;
+    color: #707070;
+    margin-left: 23px;
+    padding-left: 30px;
+    padding-right: 10px;
+    background: url(../images/icons/main-more_4x.png) no-repeat;
+    background-position: 0 center;
+    background-size: 25px;
+  }
+
+  /* 내용 요약 */
+  .acctb-summary {
+    width: 100%;
+    height: 110px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .acctb-summary-income,
+  .acctb-summary-expend {
+    width: 39.86%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .income-summary-total .summary-total{
+    margin-right: 0.4em;
+    font-size: 18px;
+    font-weight: normal;
+    color: #5694f0
+  }
+  .expend-summary-total .summary-total{
+    margin-right: 0.4em;
+    font-size: 18px;
+    font-weight: normal;
+    color: #f7323f
+  }
+  .income-summary-category,
+  .expend-summary-category{
+    font-size: max(14px,0.5vw);
+    color:#666;
+  }
+  .income-summary-total,
+  .expend-summary-total,
+  .income-summary-category,
+  .expend-summary-category,
+  .income-detail-amount,
+  .income-detail-reason,
+  .expend-detail-amount,
+  .expend-detail-reason {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .acctb-detail {
+    width: 100%;
+    height: 690px;
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #eee;
+    font-size: 15px;
+  }
+
+  .acctb-detail-income,
+  .acctb-detail-expend {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .acctb-detail-income {
+    border-right: 1px solid #eee
+  }
+
+  .detail-title {
+    font-size: 18px;
+    letter-spacing: 0.4em;
+    font-weight: bold;
+  }
+
+  .detail-item {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .detail-category {
+    font-size: 13px;
+    color: #666;
+    margin-left: 0.7em;
+  }
+
+  .income-detail,
+  .expend-detail {
+    font-size: 1.1em;
+    margin-right: 4px;
+  }
+
+  .acctb-detail-income .detail-title,
+  .income-detail {
+    color: #5694f0
+  }
+
+  .acctb-detail-expend .detail-title,
+  .expend-detail {
+    color: #f7323f
+  }
+
+}
