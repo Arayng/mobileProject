@@ -16,4 +16,4 @@ Important Files
 Used Resources
 - JQuery
 - IndexedDB
-'Designe by freepik'
+- 'Designe by freepik'
