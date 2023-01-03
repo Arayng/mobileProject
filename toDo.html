@@ -76,7 +76,7 @@
       </div>
       <div class="addModal-body">
         <label for="addModal-add" class="addModal-add-label">할 일</label>
-        <input type="text" class="addModal-add" id="addModal-add">
+        <input type="text" class="addModal-add" id="addModal-add" maxlength="25">
         <div class="date-group">
           <label for="addModal-date" class="addModal-date-label">목표 일</label>
           <input type="date" class="addModal-date" id="addModal-date" data-placeholder="" min="" value="">
@@ -131,6 +131,9 @@
 </div>
 <div class="snackBar null">
   <p>일정을 입력해주세요.</p>
+</div>
+<div class="snackBar textRange">
+  <p>최대 입력 가능 글자 수를<br> 초과하였습니다.</p>
 </div>
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   <script src="js/swiperSetting.js"></script>

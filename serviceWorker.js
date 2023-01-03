@@ -6,11 +6,11 @@ const aFilesToCache = [ // 캐시할 파일 지정
 ];
 // 서비스워커 실행 & 캐시파일 저장
 self.addEventListener("install", pEvent => {
-      console.log("서비스 워커 실치 완료!");
+      console.log("Service worker installed");
       pEvent.waitUntil(
         caches.open(sCacheName)
         .then(pCache => {
-          console.log("캐시에 파일 저장 완료!");
+          console.log("Save file to cache done!");
           return pCache.addAll(aFilesToCache);
         })
       );
@@ -18,7 +18,7 @@ self.addEventListener("install", pEvent => {
 
 // 고유 번호 할당받은 서비스 워커 동작 시작
 self.addEventListener('activate', pEvent => {
-  console.log('서비스워커 동작 시작됨!');
+  console.log('Service worker operation started!');
 });
 
 // 고유 번호를 할당 받은 서비스워커 작동
@@ -27,10 +27,10 @@ self.addEventListener('fetch', pEvent => {
     caches.match(pEvent.request)
     .then(response => {
       if(!response){
-        console.log("네트워크로 데이터 요청!", pEvent.request)
+        console.log("Requesting data over the network!", pEvent.request)
         return fetch(pEvent.request)
       }
-      console.log("캐시에서 데이터 요청!", pEvent.request)
+      console.log("Request data from cache!", pEvent.request)
       return response;
     }).catch(err => console.log(err))
   );

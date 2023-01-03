@@ -108,7 +108,11 @@
   text-overflow: ellipsis;
   cursor: pointer;
 }
-
+.chklist-input+.chklist-label:hover{
+  max-width: 100%;
+  white-space: break-spaces;
+  overflow: visible;
+}
 .chklist-input:checked+.chklist-label {
   background-position: 0 -19px;
 }

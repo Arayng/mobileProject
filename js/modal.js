@@ -46,10 +46,7 @@ $(function(){
       $('.addModal-add').val('');
       $('.addModal-date').val(today().fullDate).attr('data-placeholder', dateReplace(today().fullDate));
     }
-    // 테스트용
-    // $('.i-alert').click(function(){
-    //   snackPopUp('add')
-    // })
+    
     // 스낵알람
     function snackPopUp(action) {
       $(`.snackBar.${action}`).clearQueue().slideDown(300).delay(800).fadeOut(300)
