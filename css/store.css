@@ -1,0 +1,41 @@
+.store{
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+/* store navigation */
+
+.str-nav{
+  width: 100%;
+}
+.str-nav ul {
+  height: 40px;
+  padding: 3px 0;
+  border-radius: 10px;
+  background-color: #FEF6E2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.str-nav-item{
+  width: 33.333%;
+  height: 100%;
+  box-shadow: 0 5px 5px -5px #90909070;
+  color: #707070;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: font 0.3s, background 0.5s, border 0.5s;
+}
+.str-nav-item.active{
+  height: 100%;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #ffdbce;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 5px 5px #ffdbce;
+}

@@ -77,7 +77,13 @@
   padding: 10px 5px;
   box-sizing: border-box;
 }
-
+.chklist-wrap {
+  height: 32px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .chklist-chkbox {
   display: flex;
   align-items: center;
@@ -98,7 +104,7 @@
 
 .chklist-input+.chklist-label {
   display: inline-block;
-  max-width: 120px;
+  max-width: 140px;
   max-height: 19px;
   padding-left: 25px;
   background: url(../images/icons/chkbox.png) no-repeat 0 0 / 19px auto;
@@ -122,13 +128,7 @@
   text-decoration: line-through;
 }
 
-.chklist-wrap {
-  height: 32px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+
 
 .chklist-info {
   display: flex;
