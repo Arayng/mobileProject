@@ -98,7 +98,7 @@
 
 .chklist-input+.chklist-label {
   display: inline-block;
-  max-width: 170px;
+  max-width: 120px;
   max-height: 19px;
   padding-left: 25px;
   background: url(../images/icons/chkbox.png) no-repeat 0 0 / 19px auto;

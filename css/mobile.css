@@ -336,7 +336,6 @@ fieldset {
 
 .idx-chklist-inpChk+.idx-chklist-labelChk {
   padding: 0 0 0 min(7.21vw, 31px);
-  max-width: 120px;
   height: min(5.117vw, 22px);
   display: inline-block;
   background-repeat: no-repeat;
