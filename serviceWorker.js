@@ -1,10 +1,10 @@
-const sCacheName = "hamker"; // 캐시 제목
-const aFilesToCache = [ // 캐시할 파일 지정
+const sCacheName = "hamker";
+const aFilesToCache = [
   './',
   './manifest.json', 
   './favicon.ico',
 ];
-// 서비스워커 실행 & 캐시파일 저장
+
 self.addEventListener("install", pEvent => {
       console.log("Service worker installed");
       pEvent.waitUntil(
@@ -16,12 +16,10 @@ self.addEventListener("install", pEvent => {
       );
     });
 
-// 고유 번호 할당받은 서비스 워커 동작 시작
-self.addEventListener('activate', pEvent => {
+self.addEventListener('activate', () => {
   console.log('Service worker operation started!');
 });
 
-// 고유 번호를 할당 받은 서비스워커 작동
 self.addEventListener('fetch', pEvent => {
   pEvent.respondWith(
     caches.match(pEvent.request)
@@ -36,3 +34,4 @@ self.addEventListener('fetch', pEvent => {
   );
 });
     
+
